@@ -1,3 +1,7 @@
+# Naming Things is Hard - Jan 2020 Edition
+
+Moving the site from Drupal to a static site generator because I don't have time to use Drupal 8 in my personal life. Cool! 
+
 # npm Scripts Starter
 
 The world is on fire but I'm finally getting around to learning how to set up and use npm scripts instead of Grunt or Gulp. So that's fun.
