@@ -46,7 +46,8 @@
     "myEleventy:standard": "npx eleventy",
     "watch": "npm-watch",
     "predev": "mkdir -p build && run-p sass js img build",
-    "dev": "run-p preview watch"
+    "dev": "run-p preview watch",
+    "produce": "mkdir -p build && run-p sass js img build"
   },
   "author": "",
   "license": "ISC",
