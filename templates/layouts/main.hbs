@@ -11,12 +11,17 @@
     <link href="https://fonts.googleapis.com/css?family=Big+Shoulders+Display:400,900|Lato:400,400i,700,700i&display=swap" rel="stylesheet">
 
     <!-- Main stylesheet -->
-    <link rel="stylesheet" href="./css/styles.css" media="screen, projection" />
+    <link rel="stylesheet" href="/css/styles.css" media="screen, projection" />
 </head>
 <body>
 
+{{> topbar }}
+
+<h1>{{ title }}</h1>
+
 {{{ content }}}
 
+{{> bottombar }}
 <!-- Scripts -->
 {{!-- <script src="./js/modernizr.js"></script> --}}
 {{!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> --}}

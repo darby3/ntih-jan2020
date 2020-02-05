@@ -32,7 +32,7 @@
         "pages",
         "templates"
       ],
-      "extensions": "hbs"
+      "extensions": "hbs, md"
     }
   },
   "scripts": {
@@ -41,7 +41,7 @@
     "img": "cp -r images/ build/img/",
     "clean": "rm -r build/",
     "preview": "live-server --no-browser --open=build/ --watch=build/ --mount=/:build/ --ignore=**/*tmp-browserify*",
-    "build": "run-p myEleventy:standard",
+    "build": "run-s myEleventy:standard",
     "myEleventy:debug": "DEBUG=Eleventy* npx eleventy",
     "myEleventy:standard": "npx eleventy",
     "watch": "npm-watch",
