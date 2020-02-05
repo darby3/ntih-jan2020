@@ -35,3 +35,14 @@ p {
   border-top: 1px dotted #cacaca;
   padding: 2rem 0;
 }
+
+header {
+  margin-bottom: 4rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #004433;
+
+  h1 {
+    color: #004433;
+    margin-bottom: 0;
+  }
+}

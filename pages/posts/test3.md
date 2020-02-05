@@ -1,6 +1,7 @@
 ---
-title: Slow it down now
+title: Go back in time
 tags: post
+date: 2019-01-01
 ---
 
 Cool thing
