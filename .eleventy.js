@@ -1,5 +1,6 @@
 const Moment = require("moment");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
+const hbsHelpers = require('handlebars-helpers')();
 
 module.exports = function(eleventyConfig) {
   // Add a filter using the Config API
@@ -19,6 +20,10 @@ module.exports = function(eleventyConfig) {
     console.log(date);
     console.log(formattedDate);
     return formattedDate;
+  });
+
+  eleventyConfig.addCollection("myPostsReverse", function(collection) {
+    return collection.getFilteredByTags("post").reverse();
   });
 
   // Return Config object.
