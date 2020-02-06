@@ -36,6 +36,7 @@
     }
   },
   "scripts": {
+    "addUpdate": "node newUpdate",
     "sass": "node-sass sass/main.scss build/css/styles.css",
     "js": "browserify js/app.js -t babelify -o build/js/app.js --debug",
     "img": "cp -r images/ build/img/",
@@ -54,8 +55,8 @@
   "devDependencies": {
     "@11ty/eleventy": "^0.10.0",
     "@11ty/eleventy-plugin-rss": "^1.0.7",
-    "@babel/core": "^7.8.3",
-    "@babel/preset-env": "^7.8.3",
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
     "babelify": "^10.0.0",
     "browserify": "^16.5.0",
     "gulp-extname": "^0.2.2",
