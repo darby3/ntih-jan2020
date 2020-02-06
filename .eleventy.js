@@ -1,8 +1,12 @@
 const Moment = require("moment");
+const pluginRss = require("@11ty/eleventy-plugin-rss");
 
 module.exports = function(eleventyConfig) {
   // Add a filter using the Config API
   // eleventyConfig.addFilter( "myFilter", function() {});
+
+  // RSS
+  eleventyConfig.addPlugin(pluginRss);
 
   // Universal Shortcodes (Adds to Liquid, Nunjucks, Handlebars)
   eleventyConfig.addShortcode("whichPartial", function(data) {
