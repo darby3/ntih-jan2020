@@ -7,6 +7,10 @@ html {
 body {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
+
+  width: calc(100% - 6rem);
+  max-width: 1024px;
+  margin: auto;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -28,6 +32,11 @@ p {
   margin-bottom: 2rem;
   border-bottom: 1px dotted #cacaca;
   padding: 2rem 0;
+
+  a {
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
 }
 
 .bottombar {
@@ -44,5 +53,44 @@ header {
   h1 {
     color: #004433;
     margin-bottom: 0;
+  }
+}
+
+.home {
+  header {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .tag {
+    margin-bottom: 4rem;
+  }
+
+  ul li {
+    margin: 0 0 0.375rem 0;
+  }
+}
+
+
+a {
+  color: #214F79;
+  border-bottom: 4px solid #005F66;
+  text-decoration: none;
+  transition: color 0.25s ease-in-out, border-bottom 0.25s ease-in-out, background-color 0.25s ease-in-out;
+
+  &:visted {
+    color: #005F66;
+  }
+
+  &:hover {
+    color: #fff;
+    background-color: #005F66;
+    border-bottom: 4px solid #00CEE0;
+  }
+
+  &:active {
+    color: #fff;
+    outline: 2px dashed #005F66;
   }
 }
