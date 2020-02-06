@@ -51,8 +51,9 @@ header {
   border-bottom: 2px solid #004433;
 
   h1 {
+    line-height: 1.1;
     color: #004433;
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
   }
 }
 
@@ -93,4 +94,8 @@ a {
     color: #fff;
     outline: 2px dashed #005F66;
   }
+}
+
+.post {
+  max-width: 750px;
 }

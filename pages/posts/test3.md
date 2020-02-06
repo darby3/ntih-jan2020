@@ -1,11 +1,7 @@
 ---
-title: Go back in time
+title: Let's go back to the start of the blog
 tags: post
-date: 2019-01-01
+date: 2016-01-01T17:07-05:00
 ---
 
-Cool thing
-
-Fun thing
-
-Cool thing
+This is a placeholder for the first post from the original blog.

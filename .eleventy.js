@@ -1,6 +1,5 @@
 const Moment = require("moment");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
-const hbsHelpers = require('handlebars-helpers')();
 
 module.exports = function(eleventyConfig) {
   // Add a filter using the Config API
