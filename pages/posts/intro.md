@@ -1,6 +1,7 @@
 ---
 title: Current Status 
 tags: post
+date: 2020-02-06T11:03:06-05:00
 ---
 
 Naming Things is Hard has been around for a while, though it’s been quiet. It’s been running on Drupal 8, because I've been using Drupal professionally since Drupal 6, and I wanted to jump in and learn more about Drupal 8, but basically what I learned is that Drupal 8 is hard, and I learned it annoyed me a lot, and I learned it no longer felt fun for hobby-level use. I have many thoughts about this. I have many _feels_ about this. I’m not sharing them all right now. It’s annoying.
