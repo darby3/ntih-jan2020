@@ -1,6 +1,5 @@
 ---
 title: Current Status 
-tags: post
 date: 2020-02-06T11:03:06-05:00
 ---
 

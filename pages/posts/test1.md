@@ -1,6 +1,5 @@
 ---
 title: A placeholder old post
-tags: post
 date: 2019-01-01T00:00:00-05:00
 ---
 

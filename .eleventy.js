@@ -8,16 +8,19 @@ module.exports = function(eleventyConfig) {
   // RSS
   eleventyConfig.addPlugin(pluginRss);
 
+  // Merge data when cascading data
+  eleventyConfig.setDataDeepMerge(true);
+
   // Universal Shortcodes (Adds to Liquid, Nunjucks, Handlebars)
   eleventyConfig.addShortcode("whichPartial", function(data) {
-    console.dir(data);
+    // console.dir(data);
     return `${data}`;
   });
 
   eleventyConfig.addShortcode("myIshyDate", function(date, page) {
     let formattedDate = `${Moment(date).format("YYYY-MM-DD")}, ~${Moment(date).format("h a")}-ish`;
-    console.log(date);
-    console.log(formattedDate);
+    // console.log(date);
+    // console.log(formattedDate);
     return formattedDate;
   });
 
