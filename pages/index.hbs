@@ -1,9 +1,37 @@
 ---
 title: Naming Things is Hard
 layout: home
+pagination:
+    data: collections.myBlogsReverse
+    size: 3
+    alias: recentPosts
 ---
 
 <p class="tag">a blog in shambles</p>
+
+<div class="home__recent">
+    <div class="recent-posts-intro">
+        <h2>Some Recent Content</h2>
+        <p>specifically, three recent blog posts;<br />there's links to everything else down at the bottom of the page</p>
+    </div>
+
+    <div class="recent-posts">
+        {{#each recentPosts }}
+            {{#with this }}
+            {{!-- log this --}}
+                <div class="recent-content post">
+                    <header>
+                        <h3><a href="{{ data.page.url }}">{{ data.title }}</a></h3>
+                        <p>({{ myIshyDate data.page.date data.title}})</p>
+                    </header>
+
+                    {{{ this._templateContent }}}
+                </div>
+            {{/with}}
+        {{/each}}
+    </div>
+</div>
+
 
 <h2>Blog posts</h2>
 

@@ -22,6 +22,12 @@ h1 {
   font-size: 4rem;
 }
 
+h2 {
+  font-size: 3rem;
+  font-weight: 400;
+  color: #004466;
+}
+
 p {
   font-size: 1.25rem;
   line-height: 1.5;
@@ -103,6 +109,53 @@ a {
 
 .post {
   max-width: 750px;
+}
+
+.home__recent {
+  @media screen and (min-width: 700px) {
+    display: grid;
+    grid-gap: 4rem;
+    grid-template-columns: 200px 1fr;
+
+    .recent-posts-intro {
+      padding: 1rem;
+      background-color: #004466;
+
+      h2 {
+        margin-top: 1rem;
+      }
+      h2, p {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.recent-posts-intro {
+  margin-bottom: 3rem;
+
+  h2 {
+    margin: 2rem 0;
+  }
+}
+
+.recent-content.post {
+  margin: 6rem 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  border-bottom: 1px solid #214F79;
+  padding-bottom: 3rem;
+
+  header {
+    margin-bottom: 2rem;
+  }
+  h3 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
 }
 
 .til,
