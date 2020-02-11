@@ -5,10 +5,32 @@ layout: home
 
 <p class="tag">a blog in shambles</p>
 
-<h2>All Content</h2>
+<h2>Blog posts</h2>
 
 <ul>
-{{#each collections.myPostsReverse }}
+{{#each collections.myBlogsReverse }}
+    {{#with this.data }}
+        {{!-- log this --}}
+        <li><a href="{{ page.url }}">{{ title }}</a> ({{ myIshyDate page.date title}})</li>
+    {{/with}}
+{{/each}}
+</ul>
+
+<h2>Today I Learned...</h2>
+
+<ul>
+{{#each collections.myTILReverse }}
+    {{#with this.data }}
+        {{!-- log this --}}
+        <li><a href="{{ page.url }}">{{ title }}</a> ({{ myIshyDate page.date title}})</li>
+    {{/with}}
+{{/each}}
+</ul>
+
+<h2>Links of Note</h2>
+
+<ul>
+{{#each collections.myLinksReverse }}
     {{#with this.data }}
         {{!-- log this --}}
         <li><a href="{{ page.url }}">{{ title }}</a> ({{ myIshyDate page.date title}})</li>

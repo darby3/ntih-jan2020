@@ -28,6 +28,18 @@ module.exports = function(eleventyConfig) {
     return collection.getFilteredByTags("post").reverse();
   });
 
+  eleventyConfig.addCollection("myBlogsReverse", function(collection) {
+    return collection.getFilteredByTags("blog-page").reverse();
+  });
+
+  eleventyConfig.addCollection("myLinksReverse", function(collection) {
+    return collection.getFilteredByTags("link-of-note").reverse();
+  });
+
+  eleventyConfig.addCollection("myTILReverse", function(collection) {
+    return collection.getFilteredByTags("today-i-learned").reverse();
+  });
+
   // Return Config object.
   return {
     dir: {

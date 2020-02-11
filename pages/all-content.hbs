@@ -1,0 +1,17 @@
+---
+title: "Naming Things is Hard: All Content"
+layout: home
+---
+
+<p>I'm not sure why you might need a big list of everything like this, but here you go.</p>
+
+<h2>All content</h2>
+
+<ul>
+    {{#each collections.myPostsReverse }}
+        {{#with this.data }}
+        {{!-- log this --}}
+            <li><a href="{{ page.url }}">{{ title }}</a> ({{ myIshyDate page.date title}})</li>
+        {{/with}}
+    {{/each}}
+</ul>
