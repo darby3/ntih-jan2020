@@ -1,0 +1,117 @@
+---
+title: "Hey! Let&#039;s read jQuery — Part 3: One big IIFE"
+date: 2016-08-30T19:23:31-0400
+tags:
+  - Blog page
+  - jQuery
+  - javascript
+  - reading code
+---
+
+<p>The jQuery file is a huge IIFE.</p>
+
+<h2>IIFE?</h2>
+
+<p>Honestly, I’m still coming to terms with IIFEs myself. (Well, with pretty much all of JavaScript. And code in general. Life, really. But that’s another story.) So I won’t pretend any explanation I offer is going to be complete or completely accurate. But hopefully I can describe them well enough to put the jQuery file in context.</p>
+
+<p>IIFE is short for “immediately-invoked function expression.” Which is a mouthful. Basically, an IIFE is a function that immediately runs itself.</p>
+
+<p>Oh yeah, and it's pronounced "iify." At least, that's how I pronounce it in my head.</p>
+
+<h3>Function Expressions</h3>
+
+<p>Let's step back: at the most basic level, we can have function expressions in our code, and they might look like this:</p>
+
+<pre>
+<code>function() {
+    // do things
+}
+</code></pre>
+
+<p>Which is kind of useless, to have this unnamed function, just sitting there, not actually doing anything. That’s why we typically give functions names, so we can invoke them (make them do their work) by using parentheses:</p>
+
+<pre>
+<code>function doThings() {
+    // do things
+}
+
+...
+
+doThings();
+</code></pre>
+
+<p>And of course, we can give functions bits of data to work with in the forms of arguments or parameters:</p>
+
+<pre>
+<code>function doThings(data) {
+    // do things with data
+}
+
+...
+
+doThings(42)
+</code></pre>
+
+<h3>Function expressions…invoked…immediately</h3>
+
+<p>From there, it turns out it’s not a big leap to say that we can go ahead and invoke the function immediately, the moment we define it in the form of the function expression. We, essentially, just have to put the parentheses after the expression (sort of).</p>
+
+<pre>
+<code>function doThings() {
+    // do things
+}()
+</code></pre>
+
+<p>…except, for reasons I’m just going to hand-wave at in the name of trying to keep this intro simple, we have to wrap our function expression itself in parentheses, in order for this to work. Furthermore, there’s the option of including the “invocation” parentheses inside the “wrapper” parentheses, or outside of them; I tend to like them inside, myself, but either way works. (The jQuery file, as we’ll see, uses outside.)</p>
+
+<pre>
+<code>(function doThings() {
+    // do things
+}())
+
+(function doThings() {
+    // do things
+})()
+</code></pre>
+
+<p>And, of course, we can have parameters on the function expression, to which we can supply arguments during the invocation.</p>
+
+<pre>
+<code>(function doThings() {
+    // do things with data
+}(42))
+</code></pre>
+
+<h2>The jQuery file is an IIFE</h2>
+
+<h3>Or: Why IIFE?</h3>
+
+<p>I might not get into more detail than this in this post, but I’ll say that jQuery itself is a pretty good example of a use case for why you’d want to use an IIFE: when you need to add a bit of code to a JavaScript page that other bits of JavaScript code on the same page can use. I know they get used in other ways, some more complex than this and some less complex than this, and as a tool it might be one (of many, many, many JavaScript tools) I’m still working on finding my own use cases for. But for our purposes, in this series: the whole IIFE thing makes jQuery possible.</p>
+
+<h3>The jQuery IIFE</h3>
+
+<p>When you look at the jQuery file, you see that it’s actually just one gigantic IIFE. Strip away 99.999% of the detail, and it looks like this:</p>
+
+<pre>
+<code>(function (parameter1, parameter2) {
+    // do some things
+})( argument1, argument2)
+</code></pre>
+
+<p>It’s just, you know. A 10,154 line IIFE. Still a simple IIFE. Just with a lot of stuff inside it.</p>
+
+<p>Look a little closer, and we see where some of that complexity comes from:</p>
+
+<pre>
+<code>(function(global, factory) {
+    // a few things happen here
+} ( thing passed to the 'global' parameter,
+    function passed to the factory parameter )
+)
+</code></pre>
+
+<p>We have a function that does some things, and it takes two arguments to help it do those things. The first argument is called “global” and the second is called “factory.”</p>
+
+<p>I’ll hand-wave (I'm doing a lot of hand-waving) the details of those things off for now into future posts, in the spirit of finishing off our glance at the file structure in this post, only pausing to say that if you take a look at the jQuery file, if you trace out all the opening and closing parentheses and brackets, you’ll see that our first argument, “global,” is passed in to the main function on line 40, and that <em>literally the rest of the file</em> is devoted to the second argument, “factory.”</p>
+
+<p>Whoa. Long argument.</p>

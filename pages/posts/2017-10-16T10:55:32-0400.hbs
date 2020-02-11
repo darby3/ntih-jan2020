@@ -1,0 +1,19 @@
+---
+title: "...about a couple places to look for where display/view modes may be used for particular content types in Drupal 7"
+date: 2017-10-16T10:55:32-0400
+tags:
+  - Today I Learned
+  - drupal
+---
+
+<p>This one is one of those I-feel-dumb-right-now ones that creeps up on me each time I run into it: you've got a bunch of display or view modes available on a Drupal 7 site, and then a particular content type has a couple of those set as active at /admin/structure/types/manage/{content type}/display. Now: where on earth are those display modes actually used?</p>
+
+<p>For my purposes, I'm lucky, in that most everything is nicely exported out to Features, so I can check the codebase to find display modes in use. What gets me is that display modes can be used in a couple ways. If the content type is being output by a view as a rendered entity, there's likely a view mode set in the view; that's the one I usually remember. But if the content type is being rendered directly as the output of a field using an entity reference, the display mode might be set on the display mode for that particular field from the referencing content. (<em>Ohhhh, duh, yeaaaah....</em>)</p>
+
+<p>So when I'm looking for views output modes through the features code, it's helpful to search for <strong>['view_mode'] = '{display_mode_name}'</strong> to find all views that use the display mode for any rendered entities; it might also work to look for <strong>'{content_type}' =&gt; '{content_type}'</strong> to find views that use specific content types, and then look up a bit in the feature code to see what display mode is used.</p>
+
+<p>For entity references, though, looking for <strong>'view_mode' =&gt; '{display_mode}'</strong> in the features code, which should get you into a block of field instance code, which hopefully offers some useful information tracking down the content type in use and the place the content type is used.</p>
+
+<p>I suppose all of the above depends on healthy, clear use of machine names across views, content types, and field names, as well.</p>
+
+<p>Once you use the above information to find a place to check rendered output (and, yes, I recognize I'm maybe doing a bit too much hand-waving here on that part) it's worth confirming the output is what you expect via checking the theme debug comments output via some <a href="https://www.hackmonkey.com/2016/jan/drupal-7-theme-debugging">relatively straight-forward theme debugging</a>.</p>

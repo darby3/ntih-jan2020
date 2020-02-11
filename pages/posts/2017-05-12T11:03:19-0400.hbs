@@ -1,0 +1,30 @@
+---
+title: "...a dumb little drush trick for checking feature changes"
+date: 2017-05-12T11:03:19-0400
+tags:
+  - Today I Learned
+  - drupal
+  - drush
+  - git
+---
+
+<p>Working with features in Drupal? Like silly little drush tricks? Here's a quick way to see if the thing you just changed somewhere on your development site changes anything in a feature.</p>
+
+<p>Start with: </p>
+
+<pre>
+<code>drush fl &gt; ~/temp/drupal/before-fl.txt</code></pre>
+
+<p>Change something in Drupal, and then get an updated feature list:</p>
+
+<pre>
+<code>drush fl &gt; ~/temp/drupal/after-fl.txt</code></pre>
+
+<p>Then check for a change between the files:</p>
+
+<pre>
+<code>git diff --no-index ~/temp/drupal/before-fl.txt ~/temp/drupal/after-fl.txt</code></pre>
+
+<p>This works best, of course, if the feature wasn't already in an overridden state.</p>
+
+<p>You could probably do the same thing but use "drush fda -y" as your before/after check, to find the exact change that occurred, particularly if everything is in an overridden state. (I mean, sure, ideally, features are always nice and clean, but...but, well, they're not.)</p>

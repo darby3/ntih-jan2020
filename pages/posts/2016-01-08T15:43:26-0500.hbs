@@ -1,0 +1,32 @@
+---
+title: "A clickable SVG element"
+date: 2016-01-08T15:43:26-0500
+tags:
+  - Blog page
+  - svg
+  - drupal
+---
+
+<p>Here's a weird one: I'm experimenting with dropping some SVG code directly into a Drupal page and having shapes within the SVG be clickable links. (Spoiler alert: I don't have this working yet.)</p>
+
+<p>I use this to put the little bit of knowledge about how SVGs work to work, mostly picked up from <a href="https://css-tricks.com/using-svg/">this old CSS Tricks post</a>. Realizing now what I didn't know before, that SVGs really are just a lot of tags and that you can do tag-stuff with tags, I figured I could set up a text filter format in Drupal that would accept those tags. Or at least the ones I saw in the sample SVG I whipped up in Illustrator really quickly.</p>
+
+<p>So far so good; I add a new field to a content type, drop in some SVG code into that field in a sample page, pick my new text format filter, and...cool. I've got a bunch of SVG circles and squares and paths and polygons on my page.</p>
+
+<p>Then I try to wrap one of my shapes in a link tag. No dice. I do a little googling and find some <a href="http://www.w3.org/wiki/SVG_Links">documentation on techniques for getting links into SVG code</a> (after briefly looking at and rejecting several JavaScript solutions as being a little too involved for my simple test case). I implement. No dice. I move some things around. No dice.</p>
+
+<p>I'm...a little confused. Maybe there's something weird in my SVG code? I mean, I haven't looked at every single character of it. So I go looking for example code I can grab and somehow wind up on <a href="http://web.archive.org/web/20131128162342/http://dev.opera.com/articles/view/improving-image-maps-with-svg-and-xslt/">a post archived in the Wayback Machine</a> (now I'm feeling <em>really</em> behind the times). From which I grab some sample SVG code, drop it in over mine, and...</p>
+
+<p>No dice. Huh! But the example linked to at the bottom of that page works for me. </p>
+
+<p>So now I know something weird is happening, and out of a "let's cover all the bases" impulse, recognizing I've been running my sample in Chrome this whole time, I load up my copy of this sample code in IE. I mean, I don't expect it to work because that's not the direction you—</p>
+
+<p>Wait, it works in IE. Huh?</p>
+
+<p>So, now I do what I probably should be doing for everything from the get-go: I hop over to SublimeText, open up a blank HTML document, and drop my SVG with links into that. And it works in both IE and Chrome.</p>
+
+<p>Which is about where I'm going to leave it for now because it's near the end of the day on a Friday and I'm going a little cross-eyed and I think I've got a headcold coming on.</p>
+
+<p>(But okay I'll also just pop open Firefox real quick, where...my HTML example works but my Drupal example does not. Hmm!)</p>
+
+<p>(And okay I'll just go ahead and also check real quick that...yes, the HTML example works in Firefox whether I'm loading the file directly or going through "localhost" via XAMPP. Ok.) (And in IE.)</p>

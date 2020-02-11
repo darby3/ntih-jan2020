@@ -1,0 +1,148 @@
+---
+title: "Thinking through a &lt;picture&gt; element"
+date: 2016-12-16T10:26:27-0500
+tags:
+  - Blog page
+  - process
+  - html
+  - css
+  - design
+  - responsive design
+  - development
+---
+
+<h2>TL;DR</h2>
+
+<p>Responsive images. Challenging, but rewarding.</p>
+
+<p>This post might feel a little messy because I've been learning this stuff in a fairly messy way. What I'm taking away from my efforts, though, is that responsive images are complex, and that slowing down, thinking through specific design challenges, simplifying my needs or goals as much as possible, and then working toward specific design goals, building up solutions piece-by-piece along the way, has been critical to my understanding of how these things work.</p>
+
+<p>That said, I'm still glad I jumped in head first and splashed around for a while, at first, even if it kind of felt like drowning, now and then. If for no other reason, it gave me a good idea just how deep the waters go.</p>
+
+<h2>Introduction  </h2>
+
+<p>I've been experimenting with the &lt;picture&gt; element. I love the idea of it. The ability to art direct photos in a responsive environment is appealing. Moving from idea to practice has been trickier. After stumbling through a few complicated use cases—because of <em>course</em> I wanted to have my images be responsive to window aspect ratios, of <em>course</em>—I've come to realize, a, that I need to slow my roll, and, b, that I need good ways to think through responsive image solutions from the ground up.</p>
+
+<p>I'll note that <a href="http://alistapart.com/article/responsive-images-in-practice">Eric Portis's A List Apart article, "Responsive Images in Practice,"</a> has been my starting point for most all that follows. Errors in translating the substance of that article into a (semi-pseudo-)functional methodology(-in-development) are all mine.</p>
+
+<p>Here's where I'm at today, for the moment.</p>
+
+<p>It starts with a question.</p>
+
+<h2>Where am I going with this?</h2>
+
+<p>I like designing in code. It fits well with my interest in just kind of jumping into a thing and seeing what happens. It's a messy approach that doesn't work for every project or audience, but when I get the chance, when it makes sense and the stars align, the flexibility of working close to the proverbial metal, knowing that I'm doing something usable out of the gate, that I'm actually clicking and tapping on the thing itself instead of looking at some static representation of something I <em>might</em> be able to tap and click on later—it <em>feels</em> good.</p>
+
+<p>Trying that approach in learning how to work with responsive images proved troublesome, however. It's the good kind of trouble, though; the stumbles have been educational, helping reveal some of the required complexity and how easily that complexity compounds itself.</p>
+
+<p>So to move forward, I've had to step back, and literally ask myself where I'm <em>going</em> with this. What's my goal? What are these images <em>doing</em>? </p>
+
+<p>Answers to those questions lie a bit further back.</p>
+
+<h2>What is this thing?</h2>
+
+<p>What am I doing, anyway? Where are the images being used?</p>
+
+<p>I've just been implementing some responsive images for a specific project, so I can offer a concrete example here. For this project, our target page is a lengthy article with a number of primary sections, some short, some long and/or broken up into additional subsections. The goal for the images is to bring some additional color and context to the story the page is telling, and to break up the flow of the text, so it doesn't feel like an infinite wall of text.</p>
+
+<p>The text is formatted as a centered column, with margins that keep the text from hitting the edge of the screen, and max-widths that keep line lengths generally in the 45 to 75 character width for wider screens and windows. There's a little bit of responsive font sizing going on, sizing the text up a bit as the screen gets wider.</p>
+
+<p>I've got a handful of wrapper classes I can deploy as needed. For this page, each major section is in a separate &lt;section&gt; tag, each with the same wrapper class. This lets me do other things between sections that break out of the primary column width. I can, of course, also pretty easily deploy images inside of the sections themselves, as well.</p>
+
+<p>With all that in mind, I plan on loading up the page with two styles of images, that I believe will work with my current set-up to meet the original goals:</p>
+
+<ul>
+	<li>Divider images, which fall between major sections</li>
+	<li>Floater images, which will be sprinkled within the text</li>
+</ul>
+
+<p>Based on my troublesome past experience, I plan on keeping these two styles simple and, I hope, easily executable, so I have a better chance of shipping something sometime this millennium—knowing I can always come back and spiral things further and more cleverly out of control later.</p>
+
+<h2>Okay, cool, so how do these work?</h2>
+
+<p>"Good question," he said, while batting a broken, chipped-up magic wand against the edge of his desk.</p>
+
+<p>Keeping with the theme of working toward defined ends, my approach to what follows comes down to, first, clearly describing the behavior of my images, and then, second, drafting up code and creating assets that make that behavior happen.</p>
+
+<p>Which is a long-winded way of saying I'm doing the design-develop thing.</p>
+
+<p>It's also fair to say that what follows is a (somewhat) cleaner reconstruction of my actual process, which involved more fits and starts and raised eyebrows and mumbling/stuttering/talking to myself like a crazy person.</p>
+
+<p>Which is...another long-winded way of saying, I did the design-develop thing.</p>
+
+<p>There does wind up being more math involved than might be strictly necessary or actually even desirable, I'm not sure. I'm not sharing any of it here, but it's worth noting, because it reminds me that I feel like there are plenty of bits of this process I'm certain I'd like to refactor for myself going forward. (But then it just generally feels like there's a lot of things I don't fully understand any time I do anything anymore these days—I'm pretty sure that's written into my job description.)</p>
+
+<h3>Behaviors</h3>
+
+<p>In order to move forward, I know that for each image style, I want to know how the image will interact with my existing responsive styles and breakpoints. What does each image actually do on the screen? From there, how many crops or sizes of each image am I going to need, how many files on disk? What do those crops look like?</p>
+
+<p>It's also useful to remind myself that <a href="https://oncampus.oberlin.edu/webteam/2016/08/why-mobile-first">I'm trying to work mobile first</a>, so I need to think about the view of the site as it starts on a phone or in a smaller window, and work my way up toward the widescreen view of the site that I'm tend to habitually look at when I'm developing.</p>
+
+<h4>Dividers</h4>
+
+<p>For my divider images, they'll start by bleeding off the left and right edges of the screen. This means they'll clearly help separate major sections from each other; they will only appear between major sections, like big colorful punctuation marks. They'll scale up with the screen or window width. When we hit the text column's max-width, we'll keep the dividers edge-to-edge for a while. They can feel a little dramatic; it'll be cool. That said, I'm going to cap them with a max-width of their own, so they don't grow overpowering.</p>
+
+<p>We'll start off with something in the 4:3 aspect ratio area, so we have a little more room to show some detail at smaller sizes. At wider screen widths, after some to-be-determined break point, we'll go to a more 16:9-ish crop, for a more cinematic feel.</p>
+
+<p>I do remember know why I want so badly to master aspect-ratio media queries. I also remember how complex that gets. I step back from the brink of madness. My goal is to be <em>just cool enough</em> for right now, to incorporate a healthy amount of complexity out of the gate.</p>
+
+<h4>Floaters</h4>
+
+<p>The floater images will start off to the full width of the text column, not the screen or window. They'll break up the text this way but the placement is going to be a bit more flexible. </p>
+
+<p>As we scale our width up, I'll look for a width that feels right, a point where it feels like the text has room to accommodate the float, at which point the images will slide back to half the width of the text column and float into the next paragraph, either to the right or left. Because we're kicking the float in before we reach the max-width of the text column, the column width will keep sliding for a bit—and so the image size will keep scaling as well.</p>
+
+<p>As an aside: this half-width measurement is a bit of swag, because I have to start somewhere. It has the side effect of keeping the math clean. I know I could go wider, I could go narrower, I could incorporate multiple widths depending on the column width. I could also be anticipating landscape vs. portrait orientation photos, but at some point I decide to stick with landscape orientation on all these photos, and as it turns out, half-width does work pretty well for the design, so it sticks.</p>
+
+<p>Once we hit that max width, we'll go ahead and lock the image size in accordingly. Once we're dealing with a known text column width, so we can set the exact anticipated width of the image to match. From there, for bonus fancy points, as the window gets wider, and more white space opens up on either side of the text column, we can push the image outward into that white space a bit, to break it up in a hopefully interesting way.</p>
+
+<p>I considered scaling the size of the image up another notch or two at some point, really filling out the white space. But I'm already getting dizzy, and the clock is ticking.</p>
+
+<h3>Assets and Code Tools</h3>
+
+<p>On the flip side of knowing what I want the images to <em>do</em>, it's helpful to know what my tools look like in the code, to know how I'm going to implement the desired behaviors. Specifically, where does all that stuff that lives inside the picture element and srcset and sizes and media attributes come into play? Where do my concerns separate themselves when it feels like I'm describing style and behavior in my HTML?</p>
+
+<p>A little bit of hand-waving here, because this post is long: my basic approach comes down to realizing style and behavior are all still essentially handled via my CSS, and that this stuff I'm putting into the HTML partially about browser efficiency, partially about picking the right crop. We want the browser to know which file asset to grab, as it's parsing through my HTML while eagerly anticipating the CSS that's still coming down the pipe to style it. Without these details the browser would just be staring at this image element with no real idea what to do with it. Not terribly productive. That picking the right crop bit is a bit magical, though, it's fair to say; once the style and behavior of the image is CSS'ed up, the picture element is going to help us match our vision for the design by providing the correct crop (or file asset) to fill that space. So there is a very close relation between the two sets of concerns.</p>
+
+<p>To that end, I need to set up classes on the image elements and wrappers, when necessary, that handle the behaviors of the images. The CSS is going to tell the images how wide they're allowed to be, when to float or not float, what the spacing around them is going to be like, and so forth, all that good stuff just as usual. Everything that's happening in the picture element is helping the browser know which of my (many, so many) image files it should grab to appropriately fill those behaviors.</p>
+
+<h2>Technical Experimenting</h2>
+
+<p>What this last bit unlocks for me, as I start to move on to code—which I've come to realize I need to do before I open Photoshop and start making my assets—is the recognition that I can, or should, start implementation with basic placeholder images—just good old fashioned &lt;img&gt; elements—before I fancy them up with all my extra attributes and asset files. This helps me figure out what all numbers I need and where to put them all so that the final product will work. </p>
+
+<p>Had I better prepared this post, I'd have a super cool time-lapse view of my entire development process I could easily share. But I didn't prepare, and this part really is kind of messy anyway, and I'm having a heck of a time reconstructing it for myself in any sort of convenient linear fashion, so, instead, here's a bullet list of scattered recollections:</p>
+
+<ul>
+	<li>There's a little code mode going on here, some flow, some trial and error. Great for making progress, bad for remembering exactly what worked and what didn't work, later.</li>
+	<li>In general, I'm trying to "build up" as much as possible. I try starting off with just basic images and the related CSS to get the behaviors down, before moving on to incorporating the picture element and related attributes to load specific assets into place to fill those behaviors at all the right points.</li>
+	<li>When I do start working with picture attributes, I try to incorporate them one by one, so I have a better grasp of how each works as I use it. This is where Eric Portis's article really helps, and I keep coming back to it throughout the process.</li>
+	<li>I don't even worry about retina images until much later in the process, though being able to incorporate those is a great benefit of working in this space. Early in the development process, they're just noise.</li>
+	<li>Dialing in the numbers involves some of the pen work pictured below, as I work on accounting for margins and translating my ems over here into pixels over there. Which, yes, feels so, <em>so</em> dirty; there's definite room for improvement on how I set this stuff up.</li>
+	<li><a href="https://www.placehold.it">Placehold.it</a> is invaluable. I don't need real files yet so I'm not wasting time in Photoshop, and seeing the numbers change on screen immediately as I work around and between my breakpoints gives critical feedback on when things are (or are not) working. It's also slick as hell, once I do start working with retina images, to see the numbers change as I drag the browser window back and forth between my desktop monitor and my retina laptop screen.</li>
+	<li>It's also worth noting that I'm leaving image height to the file assets themselves to handle—the code never touches or relies on them. I'm really just focused on screen widths as I instruct the browser on what to do with them. Once I start layering in my different srcsets, I use placehold.it to experiment with my image aspect ratios, to see what works—what's too tall, what's too short, and at what exact points I want to change the aspect ratio to work with the existing design.</li>
+	<li>I also feel free to keep my image file asset breakpoints distinct from my text breakpoints (except where they make sense to line up, where I'm interacting with fixed points for text widths, as described previously). So, like, my floater images start floating at a point that makes sense for them to float, which doesn't have a direct correlation to a font size shift or a column max-width setting. It adds a little complexity to the process but it's worth it for the fluidity of the design.</li>
+</ul>
+
+<p>There's certainly more I can add to this list. But I'd probably also be better off at that point creating an actual tutorial and walking through some specific code. So I won't. Suffice it to say that at the end of all this, I have lots of numbers all over the place, which I need as I move into asset creation.</p>
+
+<h2>Photoshopping</h2>
+
+<p>This is another point where an entire tutorial is probably in order, but I'll keep it brief and just point out that the previous step gave me the numbers I need to work with in Photoshop. It's all right there in my Placehold.it images: by creating this functional demo with well-labelled placeholder images, I can use those dimensions to create precise artboards in Photoshop which I know are going to result in image assets that are sized exactly how I need them to be. Cool! (How's that for working in code.)</p>
+
+<p>A couple stray observations from this phase:</p>
+
+<ul>
+	<li>This is where I'm glad I've eventually fixed my image heights and aspect ratios for the various breakpoints: once I create the basic art boards, it's simply a matter of finding good crops within those boundaries for each image. If none of my images worked with those crops, I'd have to go back to the drawing board a bit though. </li>
+	<li>It's good to remember the target screen sizes and uses of the images here, to know how much detail to cram into each crop. Smaller target images work better with tighter crops on more specific details, while larger target images offer more room to open up the crop to provide additional context.</li>
+	<li>Finding a good file naming system is helpful: I wound up, after some trial and error, for my floater set of images, exporting each image into a folder named for the image, with each crop getting an "l", "m", or "s" filename—which made it far easier to rename the linked images in the resulting code, and to know what each file was going to represent.</li>
+	<li>Getting into the habit of converting the source image layer to a smart object the moment I pulled it into the artboard file was a good, good, good habit to get into. </li>
+	<li>Though Photoshop makes it easy to dump as many resolutions of each artboard out as could be desired—I stick to just 1x and 2x versions for the initial deploy. (I'll probably circle back and add more later.)</li>
+</ul>
+
+<p>With everything organized cleanly, more or less, dropping a folder full of folders into my site build and fixing up the image links is, relatively speaking, no big deal.</p>
+
+<h2>Final product</h2>
+
+<p>While it's not quite <em>done-</em>done—I've still got some reorganizing to do and some retina versions to link in <em>and all the other things in the world I've ever wanted to try doing</em>—<a href="http://www2.oberlin.edu/pres-search/profile.html">you can see where this has gone over here</a>. </p>
+
+<p>The divider images are fairly straight-forward, with a single primary breakpoint and two resulting crops; the floaters are a bit more complex, with a major breakpoint that controls the float, and two crops above and two crops below that breakpoint (one crop actually being re-used between those two sets) to help control the amount of detail visible in the image. The floaters all use the same aspect ratio, while the dividers' aspect ratio changes at the break point. It feels like I could be even more selective and granular with how many crops and file sizes I offer, but there's some pro-and-con weighing that has to be done there, as well.</p>

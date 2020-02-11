@@ -1,0 +1,18 @@
+---
+title: "...that the GitGutter package for SublimeText is really, really cool"
+date: 2017-04-17T10:07:27-0400
+tags:
+  - Today I Learned
+  - git
+  - sublime text
+---
+
+<p>In getting acquainted with my day-job codebase I've been bouncing back and forth between various issues, starting multiple fixes and feature updates in order to get the hang of how everything is laid out to find my way into the code so I can extend it. This has resulted in lots of local git branches, most of which make for useful starting points but few of which I'd consider fully baked. I'm rewriting plenty of (local!) history as I branch ideas off and move things around and combine and split.</p>
+
+<p>So keeping track of how things change in these commits is a bit challenging, and I'm learning that <a href="https://packagecontrol.io/packages/GitGutter">the GitGutter package for SublimeText</a> is really, really helpful in this regard.</p>
+
+<p>I have a love-hate relationship with keyboard shortcuts, in so far as I'd love to use all of them and hate the fact that I can't commit each and every one to immediate muscle memory. GitGutter's main review tools—bouncing from change to change, pulling up the diff pop-up—have been indispensable, and the shortcuts have been worth the effort to force them in to the mental spaces reserved for such things. (I've probably popped a few Vim commands off the stack. That's probably fine.)</p>
+
+<p>This didn't quite solve the challenge, though, of making Sublime Text highlight the specific changes I wanted to look at until I found the "Compare Against" options in the command palette. Being able to check the current file against just about any point in the repo history is huge. So now I can pretty easily compare an entire branch against the commit from which it diverged, in order to get the mile-high view of everything that's happened in there.</p>
+
+<p>What's slightly unfortunate is that it does take a slight bit of extra personal memory to remember that I'm in compare mode, especially when I bounce off to something else unrelated. I would like to the SublimeText status bar at the bottom of the window into an actual panel, or something, something that I might actually look at and grok at a glance; right now it's just a long strip of visual noise that I rarely parse. This is probably possible, but also probably not by me.</p>

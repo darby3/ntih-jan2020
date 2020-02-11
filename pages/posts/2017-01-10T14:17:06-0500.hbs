@@ -1,0 +1,10 @@
+---
+title: "...about allowing incoming requests for MySQL"
+date: 2017-01-10T14:17:06-0500
+tags:
+  - Today I Learned
+  - drupal
+  - drupal-vm
+---
+
+<p>Out of curiosity I was investigating updating a Drupal 7 build to Drupal 8, using the Drupal 8 Migrate modules in core. After trying and failing to get the 8 site in a DrupalVM to pull in from a 7 site in Dev Desktop, I jettisoned Dev Desktop and got the 7 site up and running in Drupal VM as well, which itself was no small feat (which I should probably write up for the next time I try to do this). From there for the life of me I couldn't get 8 access to the DB from the 7 site, and I'm not a devops pro so this involved a lot of raised eyebrows and fingers hovered over the keyboard, not being sure where to even go next. Eventually I landed on <a href="http://stackoverflow.com/a/37178951/2900883">this comment</a>, which got me wondering if the 7 VM even was allowing the incoming connections at all. Sure enough, it wasn't: adding the MySQL port to firewall_allowed_tcp_ports in config.yml opened up the connection and, from there, the migration was smooth. Well, smooth, in that, it helped sate my curiosity about just <em>how</em> much of a challenge that particular upgrade will be.</p>
