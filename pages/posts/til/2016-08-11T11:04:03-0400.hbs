@@ -1,0 +1,19 @@
+---
+title: "...about (not) using negative-lookbehinds"
+date: 2016-08-11T11:04:03-0400
+tags:
+  - today-i-learned
+  - regular-expressions
+---
+
+<p>One of those things that happens: learn about the "fancy" way of doing something, forget the "hold-on-there-pardner" way of doing things might be better: trying to find lots of lines in an SVG file with a particular class but that are <em>not</em> text objects. I was trying to make a negative look-behind work because, well, hey, I know what a negative look-behind is! They're fun! Let's use that!</p>
+
+<p>Except, no, don't use that. There's an easier way. (Easier being a relative term in the jungle of line noise that is regex, of course.)</p>
+
+<p>Find: <code>&lt;([^(text)])(.*)class=\"fill--black </code></p>
+
+<p>That <code>^(text)</code> basically says, "anything that is NOT the word "text"". I wrapped that in square brackets because, I think I'm supposed to. And then I wrapped <em>that</em> in parentheses because I'm going to want to make sure I capture whatever I find in there and carry it through into my replacement phrase, which looks like:</p>
+
+<p>Replace: <code>&lt;$1$2class=\"fill--blue </code></p>
+
+<p>Where the <code>$1</code> references that object text I found and the <code>$2</code> represents the "anything that exists between the object label and the word "class"" stuff. I'm sure there's regex ninja ways to explain all this better, or more likely to actually do this better—the two capture groups could probably be just one—but, hey, that's what the comments are for. Or will be for. Whenever I get around to turning them on.</p>

@@ -99,3 +99,17 @@ a {
 .post {
   max-width: 750px;
 }
+
+.til,
+.linkOfNote {
+  header {
+    h1 {
+      margin-top: 0;
+    }
+
+    p:first-child {
+      margin-bottom: 0;
+      font-weight: bold;
+    }
+  }
+}

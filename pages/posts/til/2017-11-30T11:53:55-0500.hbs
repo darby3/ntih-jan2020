@@ -1,0 +1,47 @@
+---
+title: "...about the alternate-universe logic of Conditions in Rules in Drupal"
+date: 2017-11-30T11:53:55-0500
+tags:
+  - today-i-learned
+  - drupal
+---
+
+<p>So, okay, this is kind of dumb, and it's probably covered somewhere else, better than this, but it took me more than a minute to figure it out, after digging through issue queues, so I don't want to lose it, so here we go:</p>
+
+<p>I'm setting up some Rules in Drupal 7, and I'm trying to lay out logic that looks like this in my condition set:</p>
+
+<pre>
+<code>(A &amp;&amp; B) || (C &amp;&amp; D)</code></pre>
+
+<p>So it's something like, "If field A is not empty, and it has this value, OR, if field C is not empty, and it has this value, fire off the event."</p>
+
+<p>Except the indentation that made sense to me didn't make sense to Drupal:</p>
+
+<pre>
+<code>A
+|_ AND
+   |_ B
+   |_ OR
+      |_ C
+         |_ AND
+            |_ D</code></pre>
+
+<p>Or something like that; I lost track of what I tried. The gist of it being, I was thinking of the AND and OR indentations as a tree that Drupal would walk, branching down until it got enough truthness or falseness to quit walking or fire the event.</p>
+
+<p>In reality, the ANDs and ORs are more like group headers; they implicitly AND and OR everything within them. So it's like rewriting the logic way up top to look more like this:</p>
+
+<pre>
+<code>|| (&amp;&amp; (A B)) (&amp;&amp; (C D))</code></pre>
+
+<p>Which leads to indentation in the Rules condition set that looks like this:</p>
+
+<pre>
+<code>OR
+|_ AND
+   |_ A
+   |_ B
+|_ AND
+   |_ C
+   |_ D</code></pre>
+
+<p>Which, well. Okay! Now I know this.</p>

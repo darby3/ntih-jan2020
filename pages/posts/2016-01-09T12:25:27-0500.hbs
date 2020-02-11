@@ -1,0 +1,36 @@
+---
+title: "Modernizing the workflow, or, maybe the easy way isn&#039;t actually easier"
+date: 2016-01-09T12:25:27-0500
+tags:
+  - blog-page
+  - drupal
+  - vagrant
+  - ansible
+  - git
+  - setting-up
+---
+
+<p>Moving from a non-git/MAMP-based Drupal workflow into a git/VM-based Drupal workflow is hard. Or at least, it's been hard for me. Of course, I've been poking away at it, sporadically, from various angles, for what feels like about a thousand months at this point. In between holidays and career drama and why-won't-the-baby-just-sleep challenges and all sorts of other distracting interests, like filling sketchbook pages and playing video games, that are actually probably maybe sort of better uses of my time, I'd guess, sometimes. It's kind of a cognitive overload sort of thing; there's a lot of stuff that can and does go wrong along the way, and keeping track of which part of the path you're supposed to be on at any one point in time is...challenging.</p>
+
+<p>But, on the upside, it's also kind of fun, in a nerdy and distracting sort of way. Even if it's ultimately all sort of the long way around to getting back to somewhere sort of like near where you started off from in the first place. </p>
+
+<p>Another part of the issue is that I haven't found any clear documentation that lays out the entire workflow process and what you need to do to get there, that matches up with exactly what I think <em>I</em> want to be doing. Which may or may not be the "right" thing to do. Which likely looks a little something like this fairly poorly ordered not-terribly-hierarchal list of thoughts:</p>
+
+<ul>
+	<li>If my goal is to replace MAMP as what I run my local Drupal installs on (which if for no other reason might be to eliminate the (at least perceived) need to run Drupal in a subdirectory) then I want my virtual machines to be really stupidly easy to use. I should be able to turn them on and off without much trouble.</li>
+	<li>I go back and forth between whether I want a unique virtual machine "folder" for each project I might be working on or if I just want one kind of generic VM folder I can drop-kick any Drupal project into. For a while I think I was pushing hard toward the latter but now I think I'm leaning toward the former so I can more easily account for the quirks and oddities that might pop up with different projects.</li>
+	<li>Ideally there's as much automated stuff as possible built into the activation of the virtual machine. It would be cool if I could turn it on and have it atomatically set up Drupal, maybe even grab all the files and database content from a specific remote production instance, but if I have to break that out into manual follow-up steps I guess that wouldn't feel like the end of the world.</li>
+	<li>Ideally I should be able to Drush just about anything from anywhere but I think realistically you need to be "in" the VM to drush code/DB sync the local VM install of Drupal from what's out in production.</li>
+	<li>VMs should be git-able, so if I do make little tweaks to the set up I can easily store them away, on the off-hand chance I do change machines or something, I can grab the VM out of my private git repository and away I go.</li>
+	<li>The actual Drupal install, the code for core and modules and themes, should all be separately git-able from the VM git projects. This is where I was originally thinking I wanted one VM in git I'd never have to think about again because I could drop any Drupal install into it as needed on the fly, but in practice I'm starting to see enough quirks in play that having a separate VMs in git for specific Drupal projects (or, at the very least, separate Drupal major versions) seems to be the way to go.</li>
+	<li>It's worth noting that I'm coming to all of this as a largely solo Drupal guy but at some point in the very near future I anticipate—hope!—to be working more collaboratively on some big projects so what I'm learning about all this stuff should hopefully be useful in those situations as well.</li>
+	<li>There are definitely bits of things I'd like to have happen as if by pure magic is-that-too-much-to-ask, such as:
+	<ul>
+		<li>gitignore files always already having everything I need to ignore in them at the very outset of the projects before I even create git projects so I never have to realize ever again that I've got like the entire sites/all/files directory tracked in git because what an unnecessary waste, right?  </li>
+		<li>SSH keys already being where they need to be and secure but also consistently usable across all projects from pretty much every direction and repeatable between VM installs because I mean it's not exactly hard to move the keys into the right place each time but I'm kind of lazy and I'd like to <em>not</em> have to think about that any more than I have to, and also I should probably know what I'm doing with those and keeping them properly secure so I'm not accidentally opening up an entire project to the entire world to screw up at a moment's notice.</li>
+	</ul>
+	</li>
+	<li>And above all to maybe just finally get past the "setting up all this stuff" stage so I can maybe go back to actually finally getting around to digging into the Drupal 8 theme system like I've been curious about doing for what feels like forever now, and all the daily gruntwork of updating git repositories and bringing up and down VMs as needed is nicely and pleasantly scripted at least in my brain so I can just do it without much thought required.</li>
+</ul>
+
+<p>The good news is I think maybe finally I'm getting close to this personal utopia of putting-all-the-thinking-into-not-having-to-think and in subsequent posts I hope to share what I've learned, in part with myself in the future when I have to retrace my steps for new projects, in part with anyone else out there who has seen what I've seen out there on Google: lots of pieces of the puzzle but no clear photo on the front of the box to show how it's all supposed to fit together.</p>

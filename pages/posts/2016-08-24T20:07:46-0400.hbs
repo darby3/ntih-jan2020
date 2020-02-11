@@ -1,0 +1,57 @@
+---
+title: "Hey! Let&#039;s read jQuery — Part 2: The biggest picture"
+date: 2016-08-24T20:07:46-0400
+tags:
+  - blog-page
+  - javascript
+  - jquery
+  - learning
+---
+
+<p>What <em>is</em> jQuery, anyway? I think it's important to know what this jQuery thing does if we're going to try to understand what's going on under the hood. (I imagine one might be able to deduce what a car does from nothing but a box of engine parts and headrests, but that seems like a lot of work.)</p>
+
+<p>Let's start with a few pertinent facts about how JavaScript itself works (or at least my current understanding of how it works). This way simplifies things, but:</p>
+
+<ul>
+	<li>JavaScript is a programming language. It helps us do things.</li>
+	<li>To help us do things, JavaScript gives us tools. Those tools include functions and objects.</li>
+	<li>Functions are bits of code that do things.
+	<ul>
+		<li>We "run" the bits of code that do things by using parentheses, e.g., <code>showBox()</code>.</li>
+		<li>Sometimes we give the bits of code that do things some data to work with by sticking that data inside the parentheses; <code>showBox(15, 'red')</code>.</li>
+		<li>Sometimes, a function "returns" a value; it's like when we call the function, it joins us at our table, does some things, and then goes away, leaving the results of its efforts behind on the chair it was just moments ago occupying.</li>
+	</ul>
+	</li>
+	<li>Objects are (essentially) collections of properties stored as name/value pairs.
+	<ul>
+		<li>Sometimes the values are data. Strings, numbers, booleans, whatever.</li>
+		<li>We can reference data values by sticking a period between the object name and the property name, e.g., <code>myCoolObject.numberOfBalloons</code>.</li>
+		<li>Sometimes the values are functions. We call them methods of the object. But they're just functions, with a special relationship to the object they live on.</li>
+		<li>We can "run" a method of an object by referencing it as a function on that object using a period and parentheses; e.g., <code>myCoolObject.countMyBalloons()</code>.</li>
+	</ul>
+	</li>
+	<li>Functions—and this was a bit of an a-ha moment for me—are actually just fancy objects.
+	<ul>
+		<li>The bits of code that do things are just special properties of the functions.</li>
+		<li>We can attach other properties to a function, like we can with any object. Which is, like, wait, what?</li>
+	</ul>
+	</li>
+</ul>
+
+<p>So far? So good. More or less.</p>
+
+<p>With all that in mind, we can say (and I'm kind of elliding the proof of my work, but that's fine, we're all friends here) that jQuery is really just one massive function. When we use jQuery, when we use the $ that's virtually synonymous with jQuery in our code, we're just running a function.</p>
+
+<p>Typically, we give the jQuery function a bit of data to work with; we point to something on our page, by class or an id or something else, essentially giving jQuery something from our DOM to do things with. The jQuery function then returns a value; the thing it returns is an object. That object, that jQuery object, that we get back, when we run the jQuery function, it has a bunch of methods (functions) on it, and that's where the jQuery magic kicks in; we're running methods on an object that has a connection to something else, something that exists somewhere in our HTML. (Basically.)</p>
+
+<p>So like, when I use <code>$("#menu")</code> in my code, I'm giving the jQuery function a bit of data to work with (a reference to an element with the id of "menu" somewhere on my page), and what I get back is an object, one that knows exactly where to find the menu element on my page. So then I can run <code>$("#menu").hide()</code>, and what happens is I'm running a "hide" method that lives on a jQuery object, and by the magic of its internals it knows that it's going to actually do things to this menu element it's referencing. </p>
+
+<p>It's actually really kind of cool, from that perspective; there's a <em>lot</em> going on, in there. Realizing how this actually worked in reality was another a-ha momenet for me. I read about this in <a href="http://lea.verou.me/2015/04/jquery-considered-harmful/">that jQuery Considered Harmful post</a> sometime last year, but it took me a long time and some additional study to actually get what the heck that meant.</p>
+
+<p>One thing about jQuery that always kind of confused me, before I spent any time really thinking about it, was those other jQuery function calls, the ones that didn't have any parentheses after them; stuff like <code>$.ajax()</code> or <code>$.when()</code>. They always looked a little weird to me. Sort of illegal. <em>Wrong</em>. I didn't get them. Turns out these, at least in principle, make perfect sense, knowing now that, since jQuery is just a function—which means it's just a fancy object—I can have other methods attached to it, that I can call directly. Hey! Also kind of cool!</p>
+
+<p>As a rather light user of jQuery, and having never developed plug-ins for it or having purposefully attempted to extend it, my understanding of it and how it works and what it does is obviously a bit surface-level, and I'm also not going deep into some of the technical details yet (like, how do all those methods wind up on the object the jQuery function returns?), but I think there's enough there to give myself an idea what to look for when I start digging into the actual code. In the next post. I promise.</p>
+
+<p>—</p>
+
+<p><em>Periodic reminder down here about how much I'm indebted to <a href="http://learnwebdev.net">Anthony Alicea's </a></em><a href="http://learnwebdev.net">JavaScript: Understanding The Weird Parts</a><em> course for helping put me on the path to understanding some fundamental truths about JavaScript; anything good I said above, he probably said better, and anything wrong I said above, definitely wasn't his fault.</em></p>
