@@ -33,35 +33,37 @@ pagination:
 </div>
 
 
-<h2>Blog posts</h2>
+<div class="all-content-links">
+    <h2>Blog posts</h2>
 
-<ul>
-{{#each collections.myBlogsReverse }}
-    {{#with this.data }}
-        {{!-- log this --}}
-        <li><a href="{{ page.url }}">{{ title }}</a> ({{ myIshyDate page.date title}})</li>
-    {{/with}}
-{{/each}}
-</ul>
+    <ul>
+    {{#each collections.myBlogsReverse }}
+        {{#with this.data }}
+            {{!-- log this --}}
+            <li><a href="{{ page.url }}">{{ title }}</a> ({{ myIshyDate page.date title}})</li>
+        {{/with}}
+    {{/each}}
+    </ul>
 
-<h2>Today I Learned...</h2>
+    <h2>Today I Learned...</h2>
 
-<ul>
-{{#each collections.myTILReverse }}
-    {{#with this.data }}
-        {{!-- log this --}}
-        <li><a href="{{ page.url }}">{{ title }}</a> ({{ myIshyDate page.date title}})</li>
-    {{/with}}
-{{/each}}
-</ul>
+    <ul>
+    {{#each collections.myTILReverse }}
+        {{#with this.data }}
+            {{!-- log this --}}
+            <li><a href="{{ page.url }}">{{ title }}</a> ({{ myIshyDate page.date title}})</li>
+        {{/with}}
+    {{/each}}
+    </ul>
 
-<h2>Links of Note</h2>
+    <h2>Links of Note</h2>
 
-<ul>
-{{#each collections.myLinksReverse }}
-    {{#with this.data }}
-        {{!-- log this --}}
-        <li><a href="{{ page.url }}">{{ title }}</a> ({{ myIshyDate page.date title}})</li>
-    {{/with}}
-{{/each}}
-</ul>
+    <ul>
+    {{#each collections.myLinksReverse }}
+        {{#with this.data }}
+            {{!-- log this --}}
+            <li><a href="{{ page.url }}">{{ title }}</a> ({{ myIshyDate page.date title}})</li>
+        {{/with}}
+    {{/each}}
+    </ul>
+</div>
