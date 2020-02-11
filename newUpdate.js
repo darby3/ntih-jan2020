@@ -11,9 +11,10 @@ const created = now.format();
 var schema = {
   properties: {
     title: {
-      pattern: /^[a-zA-Z\s\-]+$/,
+      pattern: /^[a-zA-Z0-9_\s\-]+$/,
       message: 'Name must be only letters, spaces, or dashes',
-      required: false
+      required: false,
+      default: title,
     },
     type: {
       required: true,
@@ -61,6 +62,9 @@ tags:
 
 `;
 
+  if (fs.existsSync(outputDir + title + ".md")) {
+    throw("AWWWWWWWWWW FUDGE THAT FILE EXISTS");
+  }
   fs.writeFile(outputDir + title + ".md", output, function(err) {
     if(err) {
       return console.log(err);
