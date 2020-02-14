@@ -8,7 +8,7 @@ layout: home
 <h2>All content</h2>
 
 <ul>
-    {{#each collections.myPostsReverse }}
+    {{#each (scReverse collections.post) }}
         {{#with this.data }}
         {{!-- log this --}}
             <li><a href="{{ page.url }}">{{ title }}</a> ({{ myIshyDate page.date title}})</li>

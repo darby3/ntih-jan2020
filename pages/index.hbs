@@ -19,8 +19,6 @@ layout: home
     <div class="recent-posts">
         {{#each collections.mostRecentBlogs }}
             {{#with this }}
-                {{ log "MOST ABC" }}
-                {{ log this }}
             {{!-- log this --}}
                 <div class="recent-content post">
                     <header>
@@ -40,7 +38,7 @@ layout: home
     <h2 id="blog-posts">Blog posts</h2>
 
     <ul>
-    {{#each collections.myBlogsReverse }}
+    {{#each (scReverse collections.blog-page) }}
         {{#with this.data }}
             {{!-- log this --}}
             <li><a href="{{ page.url }}">{{ title }}</a> ({{ myIshyDate page.date title}})</li>
@@ -51,7 +49,7 @@ layout: home
     <h2 id="today-i-learned">Today I Learned...</h2>
 
     <ul>
-    {{#each collections.myTILReverse }}
+    {{#each (scReverse collections.today-i-learned) }}
         {{#with this.data }}
             {{!-- log this --}}
             <li><a href="{{ page.url }}">{{ title }}</a> ({{ myIshyDate page.date title}})</li>
@@ -62,7 +60,7 @@ layout: home
     <h2 id="links-of-note">Links of Note</h2>
 
     <ul>
-    {{#each collections.myLinksReverse }}
+    {{#each (scReverse collections.link-of-note) }}
         {{#with this.data }}
             {{!-- log this --}}
             <li><a href="{{ page.url }}">{{ title }}</a> ({{ myIshyDate page.date title}})</li>

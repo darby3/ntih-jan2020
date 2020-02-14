@@ -11,37 +11,31 @@ module.exports = function(eleventyConfig) {
   // Merge data when cascading data
   eleventyConfig.setDataDeepMerge(true);
 
-  // Universal Shortcodes (Adds to Liquid, Nunjucks, Handlebars)
+  // Useful for dynamically selecting partials on the fly
   eleventyConfig.addShortcode("whichPartial", function(data) {
-    // console.dir(data);
     return `${data}`;
   });
 
+  // Foil the trackers by reducing times to their hours, ishyily
   eleventyConfig.addShortcode("myIshyDate", function(date, page) {
     let formattedDate = `${Moment(date).format("YYYY-MM-DD")}, ~${Moment(date).format("h a")}-ish`;
-    // console.log(date);
-    // console.log(formattedDate);
     return formattedDate;
   });
 
-  eleventyConfig.addCollection("myPostsReverse", function(collection) {
-    return collection.getFilteredByTags("post").reverse();
+  // reverse an array? note: I'm still wildly unclear on the difference between filters and shortcodes and when i should
+  // use one or the other. so here's two options.
+  eleventyConfig.addFilter("reverseThatArray", function(value) {
+    return value.reverse();
   });
 
-  eleventyConfig.addCollection("myBlogsReverse", function(collection) {
-    return collection.getFilteredByTags("blog-page").reverse();
+  eleventyConfig.addShortcode("scReverse", function(value) {
+    return value.reverse();
   });
 
+  // I can probably make this generic so I can dynamically call for set numbers
+  // of items from template files, but for now this is good enough
   eleventyConfig.addCollection("mostRecentBlogs", function(collection) {
     return collection.getFilteredByTags("blog-page").reverse().slice(0, 3);
-  });
-
-  eleventyConfig.addCollection("myLinksReverse", function(collection) {
-    return collection.getFilteredByTags("link-of-note").reverse();
-  });
-
-  eleventyConfig.addCollection("myTILReverse", function(collection) {
-    return collection.getFilteredByTags("today-i-learned").reverse();
   });
 
   // Return Config object.
