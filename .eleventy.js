@@ -32,6 +32,10 @@ module.exports = function(eleventyConfig) {
     return collection.getFilteredByTags("blog-page").reverse();
   });
 
+  eleventyConfig.addCollection("mostRecentBlogs", function(collection) {
+    return collection.getFilteredByTags("blog-page").reverse().slice(0, 3);
+  });
+
   eleventyConfig.addCollection("myLinksReverse", function(collection) {
     return collection.getFilteredByTags("link-of-note").reverse();
   });

@@ -126,6 +126,24 @@ a {
       padding: 1rem;
       background-color: #004466;
 
+      ul {
+        list-style-type: none;
+        padding: 0;
+
+        li {
+          margin: 0.375rem 0;
+        }
+
+        a {
+          color: #fff;
+
+          &:hover {
+            background-color: #fff;
+            color: #004466;
+          }
+        }
+      }
+
       h2 {
         margin-top: 1rem;
       }
