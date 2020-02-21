@@ -59,11 +59,11 @@ li {
 header {
   margin-bottom: 4rem;
   padding-bottom: 2rem;
-  border-bottom: 2px solid #004433;
+  border-bottom: 2px solid $nugreen;
 
   h1 {
     line-height: 1.1;
-    color: #004433;
+    color: $nugreen;
     margin-bottom: 0.5rem;
   }
 }
@@ -77,6 +77,8 @@ header {
 
   .tag {
     margin-bottom: 4rem;
+    font-family: 'Big Shoulders Display', cursive;
+    font-size: 2rem;
   }
 
   .all-content-links ul {
@@ -92,23 +94,23 @@ header {
 
 a {
   color: #214F79;
-  border-bottom: 4px solid #005F66;
+  border-bottom: 4px solid $nugreen;
   text-decoration: none;
   transition: color 0.25s ease-in-out, border-bottom 0.25s ease-in-out, background-color 0.25s ease-in-out;
 
   &:visted {
-    color: #005F66;
+    color: $nugreen;
   }
 
   &:hover {
     color: #fff;
-    background-color: #005F66;
+    background-color: $nugreen;
     border-bottom: 4px solid #00CEE0;
   }
 
   &:active {
     color: #fff;
-    outline: 2px dashed #005F66;
+    outline: 2px dashed $nugreen;
   }
 }
 
