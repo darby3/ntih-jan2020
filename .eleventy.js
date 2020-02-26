@@ -32,6 +32,10 @@ module.exports = function(eleventyConfig) {
     return value.reverse();
   });
 
+  eleventyConfig.addShortcode("checkDraft", function(value) {
+    return value === 'draft';
+  });
+
   // I can probably make this generic so I can dynamically call for set numbers
   // of items from template files, but for now this is good enough
   eleventyConfig.addCollection("mostRecentBlogs", function(collection) {
