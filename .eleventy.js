@@ -35,7 +35,16 @@ module.exports = function(eleventyConfig) {
   // I can probably make this generic so I can dynamically call for set numbers
   // of items from template files, but for now this is good enough
   eleventyConfig.addCollection("mostRecentBlogs", function(collection) {
-    return collection.getFilteredByTags("blog-page").reverse().slice(0, 3);
+    // Filter out draft posts and private posts.
+    // Private posts aren't excluded from the repo, of course. They're just
+    // really _really_ not published.
+    const draftTerms = ['draft', 'private'];
+
+    let recentBlogs = collection.getFilteredByTags("blog-page");
+    recentBlogs = recentBlogs.filter(el => !el.data.tags.some(tag => draftTerms.includes(tag)));
+    recentBlogs = recentBlogs.reverse().slice(0, 5);
+
+    return recentBlogs;
   });
 
   // Return Config object.
