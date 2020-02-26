@@ -5,66 +5,62 @@ layout: home
 
 <p class="tag">a blog in shambles</p>
 
-<div class="home__recent">
-    <div class="recent-posts-intro">
-        <h2>Some Recent Content</h2>
-        <p>specifically, three recent blog posts;<br />there's links to everything else down at the bottom of the page, broken up into the following categories:</p>
+<div class="home__main">
+    <div class="recent-posts">
+        <div class="recent-posts__full">
+            <h2>Recent Blog Posts</h2>
+            {{#each collections.mostRecentBlogs }}
+                {{#with this }}
+                {{!-- log this --}}
+                    <div class="recent-content post">
+                        <header>
+                            <h3><a href="{{ data.page.url }}">{{ data.title }}</a></h3>
+                            <p>({{ myIshyDate data.page.date data.title}})</p>
+                        </header>
+
+                        {{{ this.templateContent }}}
+                    </div>
+                {{/with}}
+            {{/each}}
+        </div>
+
+        <div class="recent-posts__links">
+            <h2 id="blog-posts">All Blog Posts</h2>
+
+            <ul>
+                {{#each (scReverse collections.blog-page) }}
+                    {{#with this.data }}
+                    {{!-- log this --}}
+                        <li><a href="{{ page.url }}">{{ title }}</a> ({{ myIshyDate page.date title}})</li>
+                    {{/with}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+
+    <div class="index-of-posts">
+        <h2>Additional Content</h2>
+
+        <h3 id="today-i-learned">Today I Learned...</h3>
+
         <ul>
-            <li><a href="#blog-posts">Blog Posts</a></li>
-            <li><a href="#today-i-learned">Today I Learned...</a></li>
-            <li><a href="#links-of-note">Links of Note</a></li>
+            {{#each (scReverse collections.today-i-learned) }}
+                {{#with this.data }}
+                {{!-- log this --}}
+                    <li><a href="{{ page.url }}">{{ title }}</a> {{!--({{ myIshyDate page.date title}})--}}</li>
+                {{/with}}
+            {{/each}}
+        </ul>
+
+        <h3 id="links-of-note">Links of Note</h3>
+
+        <ul>
+            {{#each (scReverse collections.link-of-note) }}
+                {{#with this.data }}
+                {{!-- log this --}}
+                    <li><a href="{{ page.url }}">{{ title }}</a> {{!--({{ myIshyDate page.date title}})--}}</li>
+                {{/with}}
+            {{/each}}
         </ul>
     </div>
-
-    <div class="recent-posts">
-        {{#each collections.mostRecentBlogs }}
-            {{#with this }}
-            {{!-- log this --}}
-                <div class="recent-content post">
-                    <header>
-                        <h3><a href="{{ data.page.url }}">{{ data.title }}</a></h3>
-                        <p>({{ myIshyDate data.page.date data.title}})</p>
-                    </header>
-
-                    {{{ this.templateContent }}}
-                </div>
-            {{/with}}
-        {{/each}}
-    </div>
-</div>
-
-
-<div class="all-content-links">
-    <h2 id="blog-posts">Blog posts</h2>
-
-    <ul>
-    {{#each (scReverse collections.blog-page) }}
-        {{#with this.data }}
-            {{!-- log this --}}
-            <li><a href="{{ page.url }}">{{ title }}</a> ({{ myIshyDate page.date title}})</li>
-        {{/with}}
-    {{/each}}
-    </ul>
-
-    <h2 id="today-i-learned">Today I Learned...</h2>
-
-    <ul>
-    {{#each (scReverse collections.today-i-learned) }}
-        {{#with this.data }}
-            {{!-- log this --}}
-            <li><a href="{{ page.url }}">{{ title }}</a> ({{ myIshyDate page.date title}})</li>
-        {{/with}}
-    {{/each}}
-    </ul>
-
-    <h2 id="links-of-note">Links of Note</h2>
-
-    <ul>
-    {{#each (scReverse collections.link-of-note) }}
-        {{#with this.data }}
-            {{!-- log this --}}
-            <li><a href="{{ page.url }}">{{ title }}</a> ({{ myIshyDate page.date title}})</li>
-        {{/with}}
-    {{/each}}
-    </ul>
 </div>
