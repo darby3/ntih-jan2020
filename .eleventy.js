@@ -18,7 +18,7 @@ module.exports = function(eleventyConfig) {
 
   // Foil the trackers by reducing times to their hours, ishyily
   eleventyConfig.addShortcode("myIshyDate", function(date, page) {
-    let now = Moment(date).parseZone();
+    let now = Moment.parseZone(date);
 
     let formattedDate = `${now.format("YYYY-MM-DD")}, ~${now.format("h a")}-ish`;
     return formattedDate;
