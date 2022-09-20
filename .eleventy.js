@@ -51,6 +51,11 @@ module.exports = function(eleventyConfig) {
     return recentBlogs;
   });
 
+  // Copy assets.
+  eleventyConfig.addPassthroughCopy({
+    "favico": "/"
+  });
+
   // Return Config object.
   return {
     dir: {
