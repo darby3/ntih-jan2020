@@ -18,7 +18,7 @@ module.exports = function(eleventyConfig) {
 
   // Foil the trackers by reducing times to their hours, ishyily
   eleventyConfig.addShortcode("myIshyDate", function(date, page) {
-    let formattedDate = `${Moment(date).format("YYYY-MM-DD")}, ~${Moment(date).format("h a")}-ish`;
+    let formattedDate = `${Moment.parseZone(date).format("YYYY-MM-DD")}, ~${Moment.parseZone(date).format("h a")}-ish`;
     return formattedDate;
   });
 
@@ -49,6 +49,11 @@ module.exports = function(eleventyConfig) {
     recentBlogs = recentBlogs.reverse().slice(0, 5);
 
     return recentBlogs;
+  });
+
+  // Copy assets.
+  eleventyConfig.addPassthroughCopy({
+    "favico": "/"
   });
 
   // Return Config object.
