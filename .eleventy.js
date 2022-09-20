@@ -1,4 +1,4 @@
-const Moment = require("moment");
+const Moment = require('moment-timezone');
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 
 module.exports = function(eleventyConfig) {
@@ -18,7 +18,7 @@ module.exports = function(eleventyConfig) {
 
   // Foil the trackers by reducing times to their hours, ishyily
   eleventyConfig.addShortcode("myIshyDate", function(date, page) {
-    let now = Moment.parseZone(date).utc(true);
+    let now = Moment.tz(date, 'America/New_York');
 
     let formattedDate = `${now.format("YYYY-MM-DD")}, ~${now.format("h a")}-ish`;
     return formattedDate;
