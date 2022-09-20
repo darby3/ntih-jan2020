@@ -3,31 +3,37 @@
 <head>
     {{> head }}
 </head>
-<body>
+<body class="blogpostBody">
 
 {{> topbar }}
 
-<header>
-    <h1>{{ title }}
-        {{#each tags}}
-            {{#if (checkDraft this)}}
-                <span class="h1-draft">(Draft Post)</span>
-            {{/if }}
-        {{/each}}
-    </h1>
-    <p class="italicDate"><time datetime="{{ page.date }}">{{ myIshyDate page.date }}</time></p>
-</header>
+<article class="blogpost">
+    <header>
+        <h1>{{ title }}
+            {{#each tags}}
+                {{#if (checkDraft this)}}
+                    <span class="h1-draft">(Draft Post)</span>
+                {{/if }}
+            {{/each}}
+        </h1>
+        <p class="italicDate">
+            <time datetime="{{ page.date }}">{{ myIshyDate page.date }}</time>
+        </p>
+    </header>
 
-<div class="post">
-    {{{ content }}}
-</div>
+    <div class="post">
+        {{{ content }}}
+    </div>
 
-<h2>tags</h2>
-<ul>
-    {{#each tags}}
-        <li>{{ this }}</li>
-    {{/each}}
-</ul>
+    <div class="tags">
+        <h2>tags</h2>
+        <ul>
+            {{#each tags}}
+                <li>{{ this }}</li>
+            {{/each}}
+        </ul>
+    </div>
+</article>
 
 {{> bottombar }}
 
