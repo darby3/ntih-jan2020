@@ -20,7 +20,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addShortcode("myIshyDate", function(date, page) {
     let now = Moment.tz(date, 'America/New_York');
 
-    let formattedDate = `${now.format("YYYY-MM-DD")}, ~${now.format("h a")}-ish`;
+    let formattedDate = `${now.format("MMMM D, YYYY")}`;
     return formattedDate;
   });
 

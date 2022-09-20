@@ -15,7 +15,7 @@ layout: home
                     <div class="recent-content post">
                         <header>
                             <h3><a href="{{ data.page.url }}">{{ data.title }}</a></h3>
-                            <p>({{ myIshyDate data.page.date data.title}})</p>
+                            <p class="italicDate">{{ myIshyDate data.page.date }}</p>
                         </header>
 
                         {{{ this.templateContent }}}
@@ -31,7 +31,7 @@ layout: home
                 {{#each (scReverse collections.blog-page) }}
                     {{#with this.data }}
                     {{!-- log this --}}
-                        <li><a href="{{ page.url }}">{{ title }}</a> ({{ myIshyDate page.date title}})</li>
+                        <li><a href="{{ page.url }}">{{ title }}</a></li>
                     {{/with}}
                 {{/each}}
             </ul>
@@ -47,7 +47,7 @@ layout: home
             {{#each (scReverse collections.today-i-learned) }}
                 {{#with this.data }}
                 {{!-- log this --}}
-                    <li><a href="{{ page.url }}">{{ title }}</a> {{!--({{ myIshyDate page.date title}})--}}</li>
+                    <li><a href="{{ page.url }}">{{ title }}</a></li>
                 {{/with}}
             {{/each}}
         </ul>
@@ -58,7 +58,7 @@ layout: home
             {{#each (scReverse collections.link-of-note) }}
                 {{#with this.data }}
                 {{!-- log this --}}
-                    <li><a href="{{ page.url }}">{{ title }}</a> {{!--({{ myIshyDate page.date title}})--}}</li>
+                    <li><a href="{{ page.url }}">{{ title }}</a></li>
                 {{/with}}
             {{/each}}
         </ul>
@@ -69,7 +69,7 @@ layout: home
             {{#each (scReverse collections.draft) }}
                 {{#with this.data }}
                 {{!-- log this --}}
-                    <li><a href="{{ page.url }}">{{ title }}</a> {{!--({{ myIshyDate page.date title}})--}}</li>
+                    <li><a href="{{ page.url }}">{{ title }}</a></li>
                 {{/with}}
             {{/each}}
         </ul>
