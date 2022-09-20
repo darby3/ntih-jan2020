@@ -5,7 +5,7 @@ const prompt = require('prompt');
 const now = moment();
 
 let title = process.argv[2] || now.format("YYYY_MM_DD_HH_mm_ss");
-const created = now.format();
+const created = now.toISOString(true);
 
 
 var schema = {
