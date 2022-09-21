@@ -157,27 +157,98 @@ body.blogpostBody .blogpost {
 }
 
 .home {
-  header {
-    margin: 0;
+  position: relative;
+
+  header.titlebar {
+    margin: 3rem 0;
     padding: 0;
     border: 0;
-  }
+    width: calc(100vw - 6rem);
+    max-width: 1024px;
 
-  .tag {
-    margin-bottom: 4rem;
-    font-family: 'Big Shoulders Display', cursive;
-    font-size: 2rem;
-  }
+    width: max-content;
 
-  .all-content-links ul {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 2rem;
+    display: flex;
+    flex-flow: column nowrap;
 
-    li {
-      margin: 0 0 0.5rem 0;
+    h1 {
+      margin-top: 0;
+      --fontsize: 10vw;
+      font-size: var(--fontsize);
+    }
+
+    --translation: -2.5rem;
+    --rotation: -5deg;
+
+    @media screen and (min-width: 1120px) {
+      --translation: calc(-2.55rem - (100vw - 1120px) / 2);
+    }
+
+    transform-origin: 200px 0;
+    transform: rotate(var(--rotation)) translate(var(--translation));
+
+    p.tag {
+      align-self: flex-end;
+      font-size: calc(1rem + 0.5vw);
+      margin: 0;
     }
   }
+
+
+  /* styles.css | http://127.0.0.1:8080/css/styles.css */
+
+  .home header.titlebar h1 {
+  }
+
+  .home header.titlebar {
+    /* transform-origin: left center; */
+  }
+
+
+  //
+  //.tag {
+  //  margin-bottom: 4rem;
+  //  font-family: 'Big Shoulders Display', cursive;
+  //  font-size: 2rem;
+  //}
+  //
+  //.all-content-links ul {
+  //  list-style: none;
+  //  padding: 0;
+  //  margin-bottom: 2rem;
+  //
+  //  li {
+  //    margin: 0 0 0.5rem 0;
+  //  }
+  //}
+  //
+  //// funky
+  //
+  //header h1 {
+  //  --rotate: -5deg;
+  //  --translate: -2.5rem;
+  //
+  //  transform-origin: left center;
+  //  transform: rotate(var(--rotate)) translate(var(--translate));
+  //
+  //  @media screen and (min-width: 1120px) {
+  //    --translate: calc(-2.5rem - (100vw - 1120px) / 2);
+  //  }
+  //}
+  //
+  //.tag {
+  //  --rotate: 5deg;
+  //  --translate: 20.5rem;
+  //  --translateUp: -3rem;
+  //
+  //  transform-origin: left center;
+  //  transform: rotate(var(--rotate)) translate(var(--translate), 0);
+  //  transform: translate(var(--translate), var(--translateUp)) rotate(var(--rotate));
+  //
+  //  @media screen and (max-width: 572px) {
+  //    --translate: 10rem;
+  //  }
+  //}
 }
 
 a {
@@ -237,6 +308,7 @@ a {
       h2 {
         margin-top: 1rem;
       }
+
       h2, p {
         color: #fff;
       }
@@ -265,6 +337,7 @@ a {
   header {
     margin-bottom: 2rem;
   }
+
   h3 {
     font-size: 2rem;
     margin-bottom: 0.5rem;
@@ -319,6 +392,7 @@ blockquote {
     padding-bottom: 3rem;
     border-bottom: 12px solid #004466;
   }
+
   @media screen and (min-width: 750px) {
     display: grid;
     grid-template-columns: 3fr 2fr;
