@@ -3,30 +3,69 @@ title: Naming Things is Hard
 layout: home
 ---
 
-<div class="home__main">
-    <div class="recent-posts">
-        <div class="recent-posts__full">
-            <h2>Recent Blog Posts</h2>
-            {{#each collections.mostRecentBlogs }}
-                {{#with this }}
-                {{!-- log this --}}
-                    <div class="recent-content post">
-                        <header>
-                            <h3><a href="{{ data.page.url }}">{{ data.title }}</a></h3>
-                            <p class="italicDate">{{ myIshyDate data.page.date }}</p>
-                        </header>
+<div class="wrapper">
+    <div class="home__main">
+        <div class="recent-posts">
+            <div class="recent-posts__full">
+                <h2>Recent Blog Posts</h2>
+                {{#each collections.mostRecentBlogs }}
+                    {{#with this }}
+                    {{!-- log this --}}
+                        <div class="recent-content post">
+                            <header>
+                                <h3><a href="{{ data.page.url }}">{{ data.title }}</a></h3>
+                                <p class="italicDate">{{ myIshyDate data.page.date }}</p>
+                            </header>
 
-                        {{{ this.templateContent }}}
-                    </div>
-                {{/with}}
-            {{/each}}
+                            {{{ this.templateContent }}}
+                        </div>
+                    {{/with}}
+                {{/each}}
+            </div>
+
+            <div class="recent-posts__links">
+                <h2 id="blog-posts">All Blog Posts</h2>
+
+                <ul>
+                    {{#each (scReverse collections.blog-page) }}
+                        {{#with this.data }}
+                        {{!-- log this --}}
+                            <li><a href="{{ page.url }}">{{ title }}</a></li>
+                        {{/with}}
+                    {{/each}}
+                </ul>
+            </div>
         </div>
 
-        <div class="recent-posts__links">
-            <h2 id="blog-posts">All Blog Posts</h2>
+        <div class="index-of-posts">
+            <h2>Additional Content</h2>
+
+            <h3 id="today-i-learned">Today I Learned...</h3>
 
             <ul>
-                {{#each (scReverse collections.blog-page) }}
+                {{#each (scReverse collections.today-i-learned) }}
+                    {{#with this.data }}
+                    {{!-- log this --}}
+                        <li><a href="{{ page.url }}">{{ title }}</a></li>
+                    {{/with}}
+                {{/each}}
+            </ul>
+
+            <h3 id="links-of-note">Links of Note</h3>
+
+            <ul>
+                {{#each (scReverse collections.link-of-note) }}
+                    {{#with this.data }}
+                    {{!-- log this --}}
+                        <li><a href="{{ page.url }}">{{ title }}</a></li>
+                    {{/with}}
+                {{/each}}
+            </ul>
+
+            <h3 id="links-of-note">Draft Blog Posts</h3>
+
+            <ul>
+                {{#each (scReverse collections.draft) }}
                     {{#with this.data }}
                     {{!-- log this --}}
                         <li><a href="{{ page.url }}">{{ title }}</a></li>
@@ -34,42 +73,5 @@ layout: home
                 {{/each}}
             </ul>
         </div>
-    </div>
-
-    <div class="index-of-posts">
-        <h2>Additional Content</h2>
-
-        <h3 id="today-i-learned">Today I Learned...</h3>
-
-        <ul>
-            {{#each (scReverse collections.today-i-learned) }}
-                {{#with this.data }}
-                {{!-- log this --}}
-                    <li><a href="{{ page.url }}">{{ title }}</a></li>
-                {{/with}}
-            {{/each}}
-        </ul>
-
-        <h3 id="links-of-note">Links of Note</h3>
-
-        <ul>
-            {{#each (scReverse collections.link-of-note) }}
-                {{#with this.data }}
-                {{!-- log this --}}
-                    <li><a href="{{ page.url }}">{{ title }}</a></li>
-                {{/with}}
-            {{/each}}
-        </ul>
-
-        <h3 id="links-of-note">Draft Blog Posts</h3>
-
-        <ul>
-            {{#each (scReverse collections.draft) }}
-                {{#with this.data }}
-                {{!-- log this --}}
-                    <li><a href="{{ page.url }}">{{ title }}</a></li>
-                {{/with}}
-            {{/each}}
-        </ul>
     </div>
 </div>
