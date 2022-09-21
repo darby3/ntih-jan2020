@@ -38,6 +38,29 @@ module.exports = function(eleventyConfig) {
     return value === 'draft';
   });
 
+  eleventyConfig.addShortcode("isCollectionTag", function(value) {
+    const collectionTags = ['post', 'blog-page', 'link-of-note', 'today-i-learned'];
+    return collectionTags.includes(value);
+  });
+
+  eleventyConfig.addShortcode("whichCollection", function(value) {
+    if (!value) {
+      return "";
+    }
+
+    const collectionTags = ['blog-page', 'link-of-note', 'today-i-learned'];
+
+    for (let i = 0; i < collectionTags.length; i++) {
+      const tag = collectionTags[i];
+
+      if (value.includes(tag)) {
+        return tag;
+      }
+    }
+
+    return "";
+  });
+
   // I can probably make this generic so I can dynamically call for set numbers
   // of items from template files, but for now this is good enough
   eleventyConfig.addCollection("mostRecentBlogs", function(collection) {

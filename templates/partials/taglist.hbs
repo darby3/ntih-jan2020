@@ -1,0 +1,10 @@
+<div class="tags">
+    <h2>tags</h2>
+    <ul>
+        {{#each tags}}
+            {{#unless (isCollectionTag this)}}
+                <li><a href="/tags/{{this}}">{{ this }}</a></li>
+            {{/unless }}
+        {{/each}}
+    </ul>
+</div>
