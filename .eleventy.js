@@ -78,7 +78,8 @@ module.exports = function(eleventyConfig) {
 
   // Copy assets.
   eleventyConfig.addPassthroughCopy({
-    "favico": "/"
+    "favico": "/",
+    "pages/admin": "/admin",
   });
 
   // Return Config object.
