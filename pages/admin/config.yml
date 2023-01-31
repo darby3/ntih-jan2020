@@ -1,6 +1,7 @@
 backend:
   name: git-gateway
   branch: master
+# local_backend: true
 media_folder: 'images'
 public_folder: '/img'
 collections:
@@ -9,6 +10,13 @@ collections:
     folder: 'pages/posts'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    sortable_fields:
+      fields:
+        - title
+        - date
+      default:
+        field: date
+        direction: Descending
     fields:
       - label: 'Title'
         name: 'title'
@@ -35,6 +43,13 @@ collections:
     folder: 'pages/posts/link'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    sortable_fields:
+      fields:
+        - title
+        - date
+      default:
+        field: date
+        direction: Descending
     fields:
       - label: 'Title'
         name: 'title'
@@ -61,6 +76,13 @@ collections:
     folder: 'pages/posts/til'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    sortable_fields:
+      fields:
+        - title
+        - date
+      default:
+        field: date
+        direction: Descending
     fields:
       - label: 'Title'
         name: 'title'

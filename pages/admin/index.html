@@ -11,6 +11,72 @@
     <script src="https://unpkg.com/@staticcms/app@^1.0.0/dist/static-cms-app.js"></script>
     <script>
       window.CMS.init();
+
+      const PostPreviewCard = ({ entry, widgetFor, viewStyle }) => {
+  return h(
+    'div',
+    { style: { width: '100%' } },
+    viewStyle === 'grid' ? widgetFor('image') : null,
+    h(
+      'div',
+      { style: { padding: '16px', width: '100%' } },
+      h(
+        'div',
+        {
+          style: {
+            display: 'grid',
+            width: '100%',
+            justifyContent: 'space-between',
+            alignItems: 'start',
+            gap: '16px',
+            gridTemplateColumns: '1fr 100px'
+          },
+        },
+        h(
+          'div',
+          {
+            style: {
+              display: 'flex',
+              flexDirection: viewStyle === 'grid' ? 'column' : 'row',
+              flexGrow: '1',
+              alignItems: 'baseline',
+              gap: '8px',
+            },
+          },
+          h('strong', { style: { fontSize: '24px', flexGrow: '1' } }, entry.data.title),
+          h('span', { style: { fontSize: '16px' } }, entry.data.date),
+        ),
+        h(
+          'div',
+          {
+            style: {
+              backgroundColor: entry.data.draft === true ? 'blue' : 'green',
+              color: 'white',
+              border: 'none',
+              padding: '4px 8px',
+              textAlign: 'center',
+              textDecoration: 'none',
+              display: 'inline-block',
+              cursor: 'pointer',
+              borderRadius: '4px',
+              fontFamily: 'Helvetica, sans-serif',
+              textTransform: 'uppercase',
+              fontSize: '14px'
+            },
+          },
+          entry.data.draft === true ? 'Draft' : 'Published',
+        ),
+      ),
+    ),
+  );
+};
+
+window.CMS.registerPreviewCard('blog-page', PostPreviewCard);
+window.CMS.registerPreviewCard('til', PostPreviewCard);
+window.CMS.registerPreviewCard('link', PostPreviewCard);
+
+console.log("lalala");
+
     </script>
   </body>
 </html>
