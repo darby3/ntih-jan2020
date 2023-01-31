@@ -1,10 +1,11 @@
 ---
 title: Static CMS Integration
 draft: false
-date: 2023-01-30T16:52:39-05:00
+date: 2023-01-31T12:50:36-05:00
 tags:
   - cms
   - blogging
+  - blog-page
 ---
 I love static sites, but doing a blog as a static site (as this one is) has long come with the pitfall that I don't actually use it much, because of how all the content files are in the code repo, and that means either _needing_ to do all my content entry directly into the repo, or going out to the repo on Github and manually adding files, or whatever. If only there was a way to manage the content as if it were a unique part of the system…
 
