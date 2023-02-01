@@ -1,7 +1,7 @@
 ---
 title: ...about creating custom extension packs in VSCode
-draft: true
-date: 2023-02-01T10:05:50.049-05:00
+draft: false
+date: 2023-02-01T10:18:26-05:00
 tags:
   - vscode
 ---
