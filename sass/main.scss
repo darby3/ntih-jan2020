@@ -11,6 +11,7 @@ body {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
   margin: 0;
+  position: relative;
 }
 
 .wrapper {
@@ -401,9 +402,34 @@ header.postHeader {
 
     li:not(:last-child):after {
       position: absolute;
-      content: "&";
+      content: "\25CF";
       right: -1.125rem;
       display: inline-block;
+      color: var(--gradPurple);
     }
+  }
+}
+
+#themeButton {
+  position: fixed;
+  bottom: 0.5rem;
+  right: 0.5rem;
+}
+
+// experimental dark mode!
+
+body {
+  // transition: background-color 0.3s ease;
+}
+
+body.dark {
+  background-color: hsl(260, 44%, 25%);
+  color: #eee;
+
+  --gradBlue: hsl(249, 49%, 90%);
+  --gradPurple: hsl(277, 50%, 90%);
+
+  header.titlebar {
+    border-bottom: 2px solid var(--gradPurple);
   }
 }
