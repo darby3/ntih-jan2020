@@ -4,6 +4,7 @@
 
 html {
   font-size: 16px;
+  height: 100%;
 }
 
 body {
@@ -53,23 +54,23 @@ li {
 
 a {
   color: #214F79;
-  border-bottom: 4px solid $nugreen;
+  border-bottom: 4px solid var(--coolGreen);
   text-decoration: none;
   transition: color 0.25s ease-in-out, border-bottom 0.25s ease-in-out, background-color 0.25s ease-in-out;
 
   &:visted {
-    color: $nugreen;
+    color: var(--coolGreen);
   }
 
   &:hover {
     color: #fff;
-    background-color: $nugreen;
+    background-color: var(--coolGreen);
     border-bottom: 4px solid #00CEE0;
   }
 
   &:active {
     color: #fff;
-    outline: 2px dashed $nugreen;
+    outline: 2px dashed var(--coolGreen);
   }
 }
 
@@ -83,8 +84,16 @@ blockquote {
 
 body.blogpostBody {
   width: 100%;
+  height: 100%;
   max-width: unset;
   margin: auto 0;
+
+  display: flex;
+  flex-flow: column nowrap;
+
+  .blogpost {
+    flex-grow: 1;
+  }
 }
 
 
@@ -101,32 +110,29 @@ body.blogpostBody {
 
 body.blogpostBody .topbar {
   margin-left: 3rem;
-  margin-bottom: 1.5rem;
-  padding: 2rem 0 0 0;
-  border-bottom: 0;
-}
-
-body.blogpostBody .bottombar {
-  margin-left: 3rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 3rem;
   padding: 2rem 0 0 0;
   border-bottom: 0;
 }
 
 .bottombar {
+  margin-left: 3rem;
+  margin-bottom: 1.5rem;
+  padding-block: 2rem 0.5rem;
+  border-bottom: 0;
   margin-top: 2rem;
   border-top: 1px dotted #cacaca;
-  padding: 2rem 0;
 }
+
 
 header {
   margin-bottom: 4rem;
   padding-bottom: 2rem;
-  border-bottom: 2px solid $nugreen;
+  border-bottom: 2px solid var(--coolGreen);
 
   h1 {
     line-height: 1.1;
-    color: $nugreen;
+    color: var(--coolGreen);
     margin-bottom: 0.5rem;
   }
 }
@@ -146,7 +152,7 @@ body.blogpostBody .blogpost {
       display: block;
       height: 20px;
       width: 20px;
-      background-color: $nugreen;
+      background-color: var(--coolGreen);
       position: absolute;
       right: 0;
       bottom: -20px;
@@ -241,17 +247,14 @@ body.blogpostBody .blogpost {
   }
 }
 
-.til,
-.linkOfNote {
-  header {
-    h1 {
-      margin-top: 0;
-    }
+header.postHeader {
+  h1 {
+    margin-top: 0;
+  }
 
-    p:first-child {
-      margin-bottom: 0;
-      font-weight: bold;
-    }
+  p:first-child {
+    margin-bottom: 0;
+    font-weight: bold;
   }
 }
 
@@ -295,7 +298,7 @@ body.blogpostBody .blogpost {
   position: relative;
 
   header.titlebar {
-    background-color: $nugreen;
+    background-color: var(--coolGreen);
     padding: 3rem 0;
     display: flex;
     justify-content: center;
@@ -345,3 +348,16 @@ body.blogpostBody .blogpost {
   }
 }
 
+.tagsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem 2rem;
+
+  /* Defaults; modify or delete */
+
+  align-items: normal;
+  justify-content: normal;
+}

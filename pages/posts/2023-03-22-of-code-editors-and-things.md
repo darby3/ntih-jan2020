@@ -3,9 +3,9 @@ title: Visual Studio Storm
 draft: false
 date: 2023-03-22T09:20:54.406-04:00
 tags:
-  - code editors
+  - code-editors
   - phpstorm
-  - vs code
+  - vscode
   - blog-page
 ---
 Sometime late in 2022 I made the switch from PhpStorm to Visual Studio Code. Now I think I'm switching at least partially back. Maybe!

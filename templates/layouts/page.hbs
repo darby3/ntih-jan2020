@@ -3,23 +3,26 @@
 <head>
     {{> head }}
 </head>
-<body>
+
+<body class="blogpostBody">
 
 {{> topbar }}
 
-<header>
-    <h1>{{ title }}
-        {{#each tags}}
-            {{#if (checkDraft this)}}
-                <span class="h1-draft">(Draft Post)</span>
-            {{/if }}
-        {{/each}}
-    </h1>
-</header>
+<article class="blogpost">
+    <header >
+        <h1>{{ title }}
+            {{#each tags}}
+                {{#if (checkDraft this)}}
+                    <span class="h1-draft">(Draft Post)</span>
+                {{/if }}
+            {{/each}}
+        </h1>
+    </header>
 
-<div class="post">
-    {{{ content }}}
-</div>
+    <div class="post">
+        {{{ content }}}
+    </div>
+</article>
 
 {{> bottombar }}
 

@@ -38,6 +38,14 @@ module.exports = function(eleventyConfig) {
     return value === 'draft';
   });
 
+  eleventyConfig.addShortcode("checkTil", function(value) {
+    return value === 'today-i-learned';
+  });
+
+  eleventyConfig.addShortcode("checkLink", function(value) {
+    return value === 'link-of-note';
+  });
+
   eleventyConfig.addShortcode("isCollectionTag", function(value) {
     const collectionTags = ['post', 'blog-page', 'link-of-note', 'today-i-learned'];
     return collectionTags.includes(value);
@@ -106,6 +114,19 @@ module.exports = function(eleventyConfig) {
 			return data.eleventyExcludeFromCollections;
 		}
 	});
+
+  	// Return all the tags used in a collection
+	eleventyConfig.addFilter("getAllTags", (collection) => {
+    let tagSet = new Set();
+    for (let item of collection) {
+      (item.data.tags || []).forEach((tag) => tagSet.add(tag));
+    }
+    return Array.from(tagSet);
+  });
+
+  eleventyConfig.addFilter("filterTagList", function filterTagList(tags) {
+    return (tags || []).filter((tag) => ["all", "nav", "post", "posts"].indexOf(tag) === -1);
+  });
 
 	eleventyConfig.on("eleventy.before", ({runMode}) => {
 		// Set the environment variable

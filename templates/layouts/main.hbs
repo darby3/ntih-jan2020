@@ -3,12 +3,23 @@
 <head>
     {{> head }}
 </head>
+
 <body class="blogpostBody">
 
 {{> topbar }}
 
 <article class="blogpost">
-    <header>
+    <header class="postHeader">
+        {{#each tags}}
+            {{#if (checkTil this)}}
+                <p>Today I Learned</p>
+            {{/if }}
+
+            {{#if (checkLink this)}}
+                <p>Link of Note</p>
+            {{/if }}
+        {{/each}}
+
         <h1>{{ title }}
             {{#each tags}}
                 {{#if (checkDraft this)}}
@@ -16,6 +27,7 @@
                 {{/if }}
             {{/each}}
         </h1>
+
         <p class="italicDate">
             <time datetime="{{ page.date }}">{{ myIshyDate page.date }}</time>
         </p>
