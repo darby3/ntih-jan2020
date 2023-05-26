@@ -1,6 +1,6 @@
 ---
 title: Clean-up, clean-up, everybody does their share
-draft: true
+draft: false
 date: 2023-05-26T11:05:42.155-04:00
 tags:
   - meta
