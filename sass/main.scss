@@ -19,7 +19,12 @@ body {
   margin: auto;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Big Shoulders Display', cursive;
   font-weight: 900;
 }
@@ -32,13 +37,13 @@ h1 {
   font-size: 3rem;
   font-family: 'Big Shoulders Display', cursive;
   font-weight: 400;
-  color: #214F79;
+  color: var(--gradBlue);
 }
 
 h2 {
   font-size: 3rem;
   font-weight: 400;
-  color: #004466;
+  color: var(--gradPurple);
 }
 
 p {
@@ -53,31 +58,31 @@ li {
 }
 
 a {
-  color: #214F79;
-  border-bottom: 4px solid var(--coolGreen);
+  color: var(--gradBlue);
+  border-bottom: 1px solid var(--gradPurple);
   text-decoration: none;
   transition: color 0.25s ease-in-out, border-bottom 0.25s ease-in-out, background-color 0.25s ease-in-out;
 
   &:visted {
-    color: var(--coolGreen);
+    color: var(--gradPurple);
   }
 
   &:hover {
     color: #fff;
-    background-color: var(--coolGreen);
-    border-bottom: 4px solid #00CEE0;
+    background-color: var(--gradPurple);
+    border-bottom: 1px solid var(--gradBlue);
   }
 
   &:active {
     color: #fff;
-    outline: 2px dashed var(--coolGreen);
+    outline: 2px dashed var(--gradPurple);
   }
 }
 
 blockquote {
   margin: 4rem 2rem 4rem 0;
   padding: 0 1rem;
-  border-left: 8px solid #214F79;
+  border-left: 8px solid var(--gradBlue);
   font-style: italic;
 }
 
@@ -96,23 +101,37 @@ body.blogpostBody {
   }
 }
 
-
 .topbar {
   margin-bottom: 2rem;
   border-bottom: 1px dotted #cacaca;
   padding: 2rem 0;
 
+  background: rgb(16, 101, 162);
+  background: linear-gradient(135deg, rgba(16, 101, 162, 1) 0%, rgba(76, 23, 111, 1) 100%);
+
   a {
     font-size: 1rem;
     text-transform: uppercase;
+    color: #fff;
   }
 }
 
 body.blogpostBody .topbar {
   margin-left: 3rem;
-  margin-bottom: 3rem;
-  padding: 2rem 0 0 0;
+  margin-bottom: 4rem;
+  padding: 1.5rem 2rem;
   border-bottom: 0;
+  text-align: right;
+
+  p {
+    margin: 0;
+
+    a {
+      &:hover {
+        border-bottom: 1px solid #fff;
+      }
+    }
+  }
 }
 
 .bottombar {
@@ -124,15 +143,14 @@ body.blogpostBody .topbar {
   border-top: 1px dotted #cacaca;
 }
 
-
 header {
   margin-bottom: 4rem;
   padding-bottom: 2rem;
-  border-bottom: 2px solid var(--coolGreen);
+  border-bottom: 2px solid var(--gradPurple);
 
   h1 {
     line-height: 1.1;
-    color: var(--coolGreen);
+    color: var(--gradBlue);
     margin-bottom: 0.5rem;
   }
 }
@@ -152,7 +170,7 @@ body.blogpostBody .blogpost {
       display: block;
       height: 20px;
       width: 20px;
-      background-color: var(--coolGreen);
+      background-color: var(--gradPurple);
       position: absolute;
       right: 0;
       bottom: -20px;
@@ -212,7 +230,7 @@ body.blogpostBody .blogpost {
     margin-top: 0;
   }
 
-  border-bottom: 1px solid #214F79;
+  border-bottom: 1px solid var(--gradBlue);
   padding-bottom: 3rem;
 
   header {
@@ -260,7 +278,7 @@ header.postHeader {
 
 .italicDate {
   font-style: italic;
-  color: #527262;
+  color: var(--gradPurple);
 }
 
 .bold {
@@ -298,7 +316,10 @@ header.postHeader {
   position: relative;
 
   header.titlebar {
-    background-color: var(--coolGreen);
+    background-color: var(--gradPurple);
+    background: rgb(16, 101, 162);
+    background: linear-gradient(135deg, rgba(16, 101, 162, 1) 0%, rgba(76, 23, 111, 1) 100%);
+
     padding: 3rem 0;
     display: flex;
     justify-content: center;
@@ -338,7 +359,7 @@ header.postHeader {
 .home__main {
   h2 {
     padding-bottom: 3rem;
-    border-bottom: 12px solid #004466;
+    border-bottom: 12px solid var(--gradBlue);
   }
 
   @media screen and (min-width: 750px) {

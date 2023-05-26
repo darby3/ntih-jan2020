@@ -47,7 +47,7 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addShortcode("isCollectionTag", function(value) {
-    const collectionTags = ['post', 'blog-page', 'link-of-note', 'today-i-learned'];
+    const collectionTags = ['blog-page', 'link-of-note', 'today-i-learned'];
     return collectionTags.includes(value);
   });
 
@@ -125,7 +125,7 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addFilter("filterTagList", function filterTagList(tags) {
-    return (tags || []).filter((tag) => ["all", "nav", "post", "posts"].indexOf(tag) === -1);
+    return (tags || []).filter((tag) => ["all", "blog-page", "today-i-learned", "link-of-note"].indexOf(tag) === -1);
   });
 
 	eleventyConfig.on("eleventy.before", ({runMode}) => {

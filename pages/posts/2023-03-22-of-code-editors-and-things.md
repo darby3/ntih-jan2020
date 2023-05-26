@@ -6,7 +6,6 @@ tags:
   - code-editors
   - phpstorm
   - vscode
-  - blog-page
 ---
 Sometime late in 2022 I made the switch from PhpStorm to Visual Studio Code. Now I think I'm switching at least partially back. Maybe!
 
