@@ -17,23 +17,7 @@
       ],
       "extensions": "scss"
     },
-    "img": {
-      "patterns": [
-        "images"
-      ],
-      "extensions": [
-        "jpg",
-        "png"
-      ]
-    },
-    "js": "js/**",
-    "build": {
-      "patterns": [
-        "pages",
-        "templates"
-      ],
-      "extensions": "hbs, md"
-    }
+    "js": "js/**"
   },
   "scripts": {
     "addUpdate": "node newUpdate",
@@ -41,16 +25,16 @@
     "sass:prod": "node-sass --output-style=compressed sass/main.scss build/css/styles.css",
     "js": "esbuild js/app.js --bundle --sourcemap  --minify --outfile=build/js/app.js",
     "js:prod": "esbuild js/app.js --bundle --minify --outfile=build/js/app.js",
-    "img": "cp -r images/ build/img/",
     "clean": "rm -r build/",
-    "preview": "live-server --no-browser --open=build/ --watch=build/ --mount=/:build/ --ignore=**/*tmp-browserify*",
     "build": "run-s myEleventy:standard",
+    "build:dev": "run-s myEleventy:dev",
     "myEleventy:debug": "DEBUG=Eleventy* npx eleventy",
+    "myEleventy:dev": "npx eleventy --quiet --serve --incremental",
     "myEleventy:standard": "npx eleventy --quiet",
     "watch": "npm-watch",
-    "predev": "mkdir -p build && run-p sass js img build",
-    "dev": "run-p preview watch",
-    "produce": "mkdir -p build && run-p sass:prod js:prod img build"
+    "predev": "mkdir -p build && run-p sass js",
+    "dev": "run-p build:dev watch",
+    "produce": "mkdir -p build && run-p sass:prod js:prod build"
   },
   "author": "",
   "license": "ISC",
@@ -59,7 +43,6 @@
     "@11ty/eleventy-plugin-rss": "^1.2.0",
     "esbuild": "^0.17.19",
     "gulp-extname": "^0.2.2",
-    "live-server": "^1.2.2",
     "moment": "^2.29.4",
     "node-sass": "^9.0.0",
     "npm-run-all": "^4.1.5",
