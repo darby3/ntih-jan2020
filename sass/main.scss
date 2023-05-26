@@ -382,3 +382,28 @@ header.postHeader {
   align-items: normal;
   justify-content: normal;
 }
+
+.homeNav {
+  margin-top: -3rem;
+  margin-inline: auto;
+  width: max-content;
+
+  ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: end;
+
+    li {
+      position: relative;
+    }
+
+    li:not(:last-child):after {
+      position: absolute;
+      content: "&";
+      right: -1.125rem;
+      display: inline-block;
+    }
+  }
+}
