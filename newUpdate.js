@@ -4,7 +4,7 @@ const prompt = require('prompt');
 
 const now = moment();
 
-let title = process.argv[2] || now.format("YYYY_MM_DD_HH_mm_ss");
+let title = process.argv[2] || now.format("YYYY-MM-DD-HH-mm-ss");
 const created = now.toISOString(true);
 
 
@@ -45,17 +45,20 @@ prompt.get(schema, function (err, result) {
     title = result.title;
   }
 
-  let outputDir = "./pages/posts/";
+  let outputDir = "./pages/";
 
   if (result.type === "link-of-note") {
     outputDir += "link/";
   } else if (result.type === "today-i-learned") {
     outputDir += "til/";
+  } else {
+    outputDir += "posts/";
   };
 
   let output = `---
 title: ${title}
 date: ${created}
+draft: true
 tags:
   - ${result.type}
 ---
@@ -73,5 +76,3 @@ tags:
     console.log("Update file generated: ", title);
   });
 });
-
-
