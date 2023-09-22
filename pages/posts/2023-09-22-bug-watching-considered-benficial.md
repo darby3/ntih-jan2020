@@ -1,6 +1,6 @@
 ---
 title: Bug Watching Considered Benficial?
-draft: true
+draft: false
 date: 2023-09-22T13:51:09.395-04:00
 tags:
   - bugs
