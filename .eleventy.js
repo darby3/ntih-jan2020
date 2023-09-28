@@ -5,9 +5,6 @@ module.exports = function(eleventyConfig) {
   // Add a filter using the Config API
   // eleventyConfig.addFilter( "myFilter", function() {});
 
-  // RSS
-  eleventyConfig.addPlugin(pluginRss);
-
   // Merge data when cascading data
   eleventyConfig.setDataDeepMerge(true);
 
@@ -84,6 +81,21 @@ module.exports = function(eleventyConfig) {
     return recentBlogs;
   });
 
+  // I can probably make this generic so I can dynamically call for set numbers
+  // of items from template files, but for now this is good enough
+  eleventyConfig.addCollection("mostRecentBlogsForRSS", function(collection) {
+    // Filter out draft posts and private posts.
+    // Private posts aren't excluded from the repo, of course. They're just
+    // really _really_ not published.
+    const draftTerms = ['draft', 'private'];
+
+    let recentBlogs = collection.getFilteredByGlob(["pages/posts/*.md", "pages/link/*.md", "pages/til/*.md"]);
+    recentBlogs = recentBlogs.filter(el => !el.data.tags.some(tag => draftTerms.includes(tag)));
+    recentBlogs = recentBlogs.reverse().slice(0, 10);
+
+    return recentBlogs;
+  });
+
   // Copy assets.
   eleventyConfig.addPassthroughCopy({
     "favico": "/",
@@ -134,6 +146,10 @@ module.exports = function(eleventyConfig) {
 			process.env.BUILD_DRAFTS = true;
 		}
 	});
+
+    // RSS
+    eleventyConfig.addPlugin(pluginRss);
+
 
   // Return Config object.
   return {
