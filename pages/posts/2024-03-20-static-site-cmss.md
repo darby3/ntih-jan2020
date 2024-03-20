@@ -1,7 +1,7 @@
 ---
 title: Static site content management systems
 draft: false
-date: 2024-03-20T10:03:02-04:00
+date: 2024-03-20T10:28:39-04:00
 tags:
   - static cms
   - decap cms
