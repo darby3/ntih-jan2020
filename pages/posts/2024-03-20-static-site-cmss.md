@@ -1,5 +1,5 @@
 ---
-title: Static site CMSs
+title: Static site content management systems
 draft: false
 date: 2024-03-20T10:03:02-04:00
 tags:
