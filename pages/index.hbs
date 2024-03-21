@@ -30,21 +30,8 @@ layout: home
 
             <div class="recent-posts__links">
                 <h2 id="blog-posts">All Blog Posts</h2>
+                <p><a href="/all">Index of all blog posts (and other content).</a></p>
 
-                <ul>
-                    {{#each (scReverse collections.blog-page) }}
-                        {{#with this.data }}
-                        {{!-- log this --}}
-                            <li>
-                                {{#if draft }}
-                                    <span>(DRAFT)</span>
-                                {{/if}}
-
-                                <a href="{{ page.url }}">{{ title }}</a>
-                            </li>
-                        {{/with}}
-                    {{/each}}
-                </ul>
             </div>
         </div>
 

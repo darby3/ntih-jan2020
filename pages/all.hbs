@@ -1,0 +1,65 @@
+---
+title: Naming Things is Hard
+layout: sortahome
+---
+
+<div class="wrapper">
+    <div class="home__main">
+        <div class="recent-posts">
+            <div class="recent-posts__links">
+                <p style="margin-block: 2rem;">Jump to <a href="#blog-posts">all blog posts</a>, <a href="#today-i-learned">all today-I-learned posts</a>, or <a href="#links-of-note">all links of note</a>, </p>
+
+                <h2 id="blog-posts">All Blog Posts</h2>
+
+                <ul>
+                    {{#each (scReverse collections.blog-page) }}
+                    {{#with this.data }}
+                    {{!-- log this --}}
+                    <li>
+                        {{#if draft }}
+                        <span>(DRAFT)</span>
+                        {{/if}}
+
+                        <a href="{{ page.url }}">{{ title }}</a>
+                    </li>
+                    {{/with}}
+                    {{/each}}
+                </ul>
+
+                <h2 id="today-i-learned">All Today I Learned...</h2>
+
+                <ul>
+                    {{#each (scReverse collections.today-i-learned) }}
+                    {{#with this.data }}
+                    {{!-- log this --}}
+                    <li>
+                        {{#if draft }}
+                        <span>(DRAFT)</span>
+                        {{/if}}
+
+                        <a href="{{ page.url }}">{{ title }}</a>
+                    </li>
+                    {{/with}}
+                    {{/each}}
+                </ul>
+
+                <h2 id="links-of-note">All Links of Note</h2>
+
+                <ul>
+                    {{#each (scReverse collections.link-of-note) }}
+                    {{#with this.data }}
+                    {{!-- log this --}}
+                    <li>
+                        {{#if draft }}
+                        <span>(DRAFT)</span>
+                        {{/if}}
+
+                        <a href="{{ page.url }}">{{ title }}</a>
+                    </li>
+                    {{/with}}
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

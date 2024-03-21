@@ -1,0 +1,40 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    {{> head }}
+</head>
+<body class="home">
+
+<header class="titlebar">
+    <div class="titlebar__contents">
+        <h1>{{ title }}</h1>
+        <p class="tag">a blog about nerd stuff</p>
+    </div>
+</header>
+
+<nav class="homeNav">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">About</a></li>
+  </ul>
+</nav>
+
+{{{ content }}}
+
+{{> bottombar }}
+
+<script src="./js/app.js" type="module"></script>
+
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on('init', user => {
+      if (!user) {
+        window.netlifyIdentity.on('login', () => {
+          document.location.href = '/admin/';
+        });
+      }
+    });
+  }
+</script>
+</body>
+</html>
