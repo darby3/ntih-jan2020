@@ -74,7 +74,7 @@ module.exports = function(eleventyConfig) {
     // really _really_ not published.
     const draftTerms = ['draft', 'private'];
 
-    let recentBlogs = collection.getFilteredByTags("blog-page");
+    let recentBlogs = collection.getFilteredByGlob(["pages/posts/*.md", "pages/link/*.md", "pages/til/*.md"]);
     recentBlogs = recentBlogs.filter(el => !el.data.tags.some(tag => draftTerms.includes(tag)));
     recentBlogs = recentBlogs.reverse().slice(0, 5);
 

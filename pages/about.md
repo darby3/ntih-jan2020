@@ -3,6 +3,7 @@ title: About
 layout: page
 tags:
     - about
+    - private
 ---
 
 My name is Darby. I'm a web designer/developer by day and I do other stuff with the rest of my time.
