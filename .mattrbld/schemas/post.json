@@ -1,0 +1,191 @@
+{
+  "fields": [
+    {
+      "type": "text",
+      "default": null,
+      "icon": "text-input",
+      "key": "title",
+      "label": "Title",
+      "localised": false,
+      "options": {
+        "wrapping": true,
+        "multiline": false
+      },
+      "tab": "Content",
+      "validation": {
+        "enforceMinMax": true,
+        "max": null,
+        "min": null,
+        "regex": null,
+        "regexError": null,
+        "required": false,
+        "unit": "length"
+      },
+      "value": null,
+      "version": 1,
+      "visibility": {
+        "hidden": false,
+        "showByValue": {
+          "field": null
+        }
+      }
+    },
+    {
+      "type": "toggle",
+      "default": null,
+      "icon": "toggle-on",
+      "key": "draft",
+      "label": "Draft",
+      "options": {
+        "iconLeft": null,
+        "iconRight": null
+      },
+      "tab": "Metadata",
+      "value": null,
+      "version": 1,
+      "visibility": {
+        "hidden": false,
+        "showByValue": {
+          "field": null
+        }
+      }
+    },
+    {
+      "type": "date",
+      "default": null,
+      "icon": "calendar",
+      "key": "date",
+      "label": "Date",
+      "options": {
+        "outputFormat": "iso",
+        "removable": false,
+        "showTime": true,
+        "defaultToNow": true,
+        "useAsUpdatedAt": false,
+        "only": null
+      },
+      "tab": "Metadata",
+      "validation": {
+        "max": null,
+        "min": null,
+        "required": true,
+        "unit": "date",
+        "isString": true
+      },
+      "value": null,
+      "version": 2,
+      "visibility": {
+        "hidden": false,
+        "showByValue": {
+          "field": null
+        }
+      }
+    },
+    {
+      "type": "tags",
+      "default": null,
+      "icon": "tags",
+      "key": "tags",
+      "label": "Tags",
+      "localised": false,
+      "options": {
+        "allowUnsuggested": true,
+        "autocompleteModel": []
+      },
+      "tab": "Metadata",
+      "validation": {
+        "max": null,
+        "min": null,
+        "unit": "tags"
+      },
+      "value": null,
+      "version": 1,
+      "visibility": {
+        "hidden": false,
+        "showByValue": {
+          "field": null
+        }
+      }
+    },
+    {
+      "type": "rich text",
+      "default": null,
+      "icon": "text",
+      "key": "content",
+      "label": "Content",
+      "localised": false,
+      "options": {
+        "outputFormat": "markdown",
+        "blockFormats": [
+          "blockquote",
+          "heading",
+          "hr",
+          "orderedList",
+          "unorderedList",
+          "image"
+        ],
+        "inlineFormats": [
+          "em",
+          "strong",
+          "link"
+        ],
+        "formatOptions": [
+          "allowQuoteFooters",
+          "allowNestedLists",
+          "allowImageCaptions"
+        ],
+        "inputRuleOptions": [
+          "autoquotes",
+          "dashes",
+          "ellipsis",
+          "noDoubleCaps",
+          "noDoubleSpace"
+        ],
+        "minHeading": 2,
+        "maxHeading": 4,
+        "codeLangs": [
+          "html",
+          "css",
+          "javascript",
+          "markdown"
+        ],
+        "allowRaw": false,
+        "urlTemplate": "",
+        "urlSuffix": "",
+        "linkOptions": [
+          "forceBlankTarget",
+          "allowExternal",
+          "allowInternal"
+        ]
+      },
+      "tab": "Content",
+      "validation": {
+        "enforceMinMax": true,
+        "max": null,
+        "min": null,
+        "regex": null,
+        "regexError": null,
+        "required": false,
+        "unit": "length"
+      },
+      "value": null,
+      "version": 1,
+      "visibility": {
+        "hidden": false,
+        "showByValue": {
+          "field": null
+        }
+      }
+    }
+  ],
+  "tabs": [
+    {
+      "label": "Content",
+      "groupAs": null
+    },
+    {
+      "label": "Metadata",
+      "groupAs": null
+    }
+  ]
+}
